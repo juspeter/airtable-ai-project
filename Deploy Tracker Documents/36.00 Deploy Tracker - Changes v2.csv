@@ -1,0 +1,123 @@
+Status,Type,Notes,,"Target 
+Deploy 
+Date
+
+(Double Click Cell)",,Commit CL,,"Pre-Commit Swarm Link
+
+(See This Cell's Notes If Red)","Client Platforms 
+/ 
+Server Fleets Affected",JIRA,"#fn-integration-requests-ext
+
+Link","Comms Link
+(SH / Other Thread)","Multi Product Impact?
+
+(See This Cells Notes)","Code or
+Content?","Safe as Code Only? 
+(hover over cell for details)",Client/Server Compatibility Concerns?,Staggered Platform Rollout?,Does This Require A Profile Migration?,Includes Export JSON File?,Gameplay Tags Added/Removed?,"Embedded QA Verification Prior to Commit?
+
+(Link Thread)",Link to QA Testing / Sign Off,Link to Horde Pre Flight,"Risk Mitigation Form Completed & RM Reviewed?
+
+(Link Thread)",AllowLister Approved?,TD Approved?,JIRA / Swarm Summary,REAL-XX Descrp
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Rejected,Client,This is a client and server change,,,,Maybe a 36.10 fix now?,,43186732,All,FORT-917574,IR Link,#sh-06-03-server-and-potential-client-crash-from-d-ext,TBD,Code,TBD,TBD,TBD,N/A,N/A,TBD,TBD,QA LINK,PF LINK,,Approved,,Mark dynamic delegates as UPROPERTY to keep the listener's memory alive,FORT-917574 - #sh-06-03-server-and-potential-client-crash-from-d-ext - Mark dynamic delegates as UPROPERTY to keep the listener's memory alive - Maybe a 36.10 fix now?
+Rejected,Client,"Issue has been solved via Hotfixed in 36.00 Prod Build.
+We will review the issue further during the week for a 36.10-20 client fix.
+At this point we will not pursue the 36.00 EP fix",,,,TBD,,43313637,All,"FORT-918375
+FORT-912178",IR Link,#sh-06-06-equipping-kicks-and-navigating-to-a-diff-ext,Yes,Code,Yes,No,Yes,N/A,N/A,No,In Progress,QA LINK,PF LINK,,Approved,Approved,[crashfix] Check weakptr validity before dereferencing,"FORT-918375
+FORT-912178 - #sh-06-06-equipping-kicks-and-navigating-to-a-diff-ext - [crashfix] Check weakptr validity before dereferencing - TBD"
+Deployed,Client,REAL-5379,,"UEFN Only, Hope is to get out ASAP instead of waiting for all client deploy",,43335957,,43335758,UEFN + Content Workers,UE-295113,IR Link,#sh-06-07-assets-digest-errors-block-launch-in-36-ext,Yes,Code,Yes,No,Yes,,,No,No,,,,,,,
+Deployed,Client,REAL-5379,,"UEFN Only, Hope is to get out ASAP instead of waiting for all client deploy",,43335970,,43335853,UEFN Only,FORT-920635,IR Link,#sh-06-07-assets-digest-errors-block-launch-in-36-ext,Yes,Code,Yes,No,Yes,,,No,No,,,,,,,
+Deployed,Client,REAL-5379,,,,43336056,,43276150,All,FORT-919870,IR Link,sh-06-05-cabined-accounts-can-subscribe-to-fn-cre-ext,No,Content,No,No,Yes,N/A,N/A,,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,[Crew] Don't allow cabined account to purchase crew,FORT-919870 - sh-06-05-cabined-accounts-can-subscribe-to-fn-cre-ext - [Crew] Don't allow cabined account to purchase crew - 43336056
+Deployed,Client,REAL-5379,,,,43336057,,43320562,All,FORT-920089,IR Link,#sh-06-06-navigation-issue-on-playtime-modal-ext,No,Both,No,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,Fix for playtime controls input issues.,FORT-920089 - #sh-06-06-navigation-issue-on-playtime-modal-ext - Fix for playtime controls input issues. - 43336057
+Deployed,Client,"This is a client and server change
+
+Client REAL-5379",,Ride along with next available client slot - change was already submitted to 36.10,,43336054,,43239890,All,FORT-916905,IR Link,#sh-06-06-fmcpcacher-version-after-profile-delta-e-ext,Yes,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,"* Use profile revision rather than command revision for the mcp cache version
+* Disable MCPCachers (includes CVar to enable)","FORT-916905 - #sh-06-06-fmcpcacher-version-after-profile-delta-e-ext - * Use profile revision rather than command revision for the mcp cache version
+* Disable MCPCachers (includes CVar to enable) - 43336054"
+Deployed,Client,REAL-5379,,Wed Jun 11,,43336063,,43208066,Android/iOS/Streaming(Xbox/PC),FORT-917789,IR Link,#sh-06-03-bp-rewards-price-obscured-on-mobile-ext,No,Content,No,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,Fixing an overlap for vbucks when buying the rewards for the battlepass,FORT-917789 - #sh-06-03-bp-rewards-price-obscured-on-mobile-ext - Fixing an overlap for vbucks when buying the rewards for the battlepass - 43336063
+Deployed,Client,REAL-5379,,Wed Jun 11,,43336068,,43171350,Android,FORT-914201,IR Link,#sh-06-04-client-crash-in-android-database-sqlite-ext,Yes,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,Add watch for deletion complete before database close in Fetch2,FORT-914201 - #sh-06-04-client-crash-in-android-database-sqlite-ext - Add watch for deletion complete before database close in Fetch2 - 43336068
+Deployed,Client,REAL-5379,,Thu Jun 12,,43336072,,43278625,Switch2,FORT-919789,IR Link,#sh-06-05-switch-2-36-00-launcher-icon-incorrect-ext,No,Content,No,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,,Approved,Updating switch 2 platform art to match switch,FORT-919789 - #sh-06-05-switch-2-36-00-launcher-icon-incorrect-ext - Updating switch 2 platform art to match switch - 43336072
+Deployed,Client,REAL-5379,,Wed Jun 11,,43336430,,43335129,PC,FORT-920661,IR Link,#sh-06-07-36-00-pc-mtbf-is-extremely-low-ext,Yes,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,,,New GPU profiler crashes on integrated AMD due to lack of support for copy queue timestamps,FORT-920661 - #sh-06-07-36-00-pc-mtbf-is-extremely-low-ext - New GPU profiler crashes on integrated AMD due to lack of support for copy queue timestamps - 43336430
+Deployed,Client,REAL-5379,,,,43336436,,43336080,All,"FORT-920632, FORT-920653, FORT-920660",IR Link,#sh-06-07-36-00-pc-mtbf-is-extremely-low-ext,No,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,,,"UMG: various fixes for widget animations:
+  - Fix crash caused by the runner being invalid for an unknown reason
+- Fix iteration of active animations that can grow during that iteration
+- Fix iteration of animated widgets that can grow during that iteration","FORT-920632, FORT-920653, FORT-920660 - #sh-06-07-36-00-pc-mtbf-is-extremely-low-ext - UMG: various fixes for widget animations:
+  - Fix crash caused by the runner being invalid for an unknown reason
+- Fix iteration of active animations that can grow during that iteration
+- Fix iteration of animated widgets that can grow during that iteration - 43336436"
+Deployed,Client,REAL-5379,,,,43338064,,43338002,All,"FORT-920727, FORT-920724, FORT-920726",IR Link,#sh-06-07-36-00-pc-mtbf-is-extremely-low-ext,No,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,"Shop category text is not populating, Locker UI is broken and not displaying correctly, UI Widgets for claiming SHOP purchases breaks","FORT-920727, FORT-920724, FORT-920726 - #sh-06-07-36-00-pc-mtbf-is-extremely-low-ext - Shop category text is not populating, Locker UI is broken and not displaying correctly, UI Widgets for claiming SHOP purchases breaks - 43338064"
+Deployed,Client,REAL-5379,,,,43338024,,43337805,All,FORT-920731,IR Link,#sh-06-08-robins-classic-colors-back-bling-style-n-ext,No,Content,No,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,Battle Pass is granting Red Robin Back Bling instead of Robin's Classic Colors Back Bling,FORT-920731 - #sh-06-08-robins-classic-colors-back-bling-style-n-ext - Battle Pass is granting Red Robin Back Bling instead of Robin's Classic Colors Back Bling - 43338024
+Deployed,Client,REAL-5379,,,,43338057,,43337604,All,"FORT-900007 , FORT-912105",IR Link,Increase in OnPresentHang,No,Code,Yes,No,Yes,N/A,N/A,No,No,QA LINK,PF LINK,,Approved,Approved,Bound the check of the found journal range against data so that it doesn't take forever in failure cases.,"FORT-900007 , FORT-912105 - Increase in OnPresentHang - Bound the check of the found journal range against data so that it doesn't take forever in failure cases. - 43338057"
+Deployed,Client,REAL-5379,,Wed Jun 11,,43338762,,43338252,iOS,FORT-920640,IR Link,#sh-06-07-install-hangs-on-ios-ext,No,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,Install hangs on iOS,FORT-920640 - #sh-06-07-install-hangs-on-ios-ext - Install hangs on iOS - 43338762
+Deployed,Client,REAL-5379,,Wed Jun 11,,43338785,,43338570,iOS,FORT-920640,IR Link,#sh-06-07-install-hangs-on-ios-ext,No,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,,,Fix for FortniteEarlyPreloadScreen stuck reporting,FORT-920640 - #sh-06-07-install-hangs-on-ios-ext - Fix for FortniteEarlyPreloadScreen stuck reporting - 43338785
+Deployed,Client,REAL-5379,,Wed Jun 11,,43338942,,43338856,iOS,FORT-920640,IR Link,#sh-06-07-install-hangs-on-ios-ext,No,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,Build warning fix: Added a missing plugin dependency.,FORT-920640 - #sh-06-07-install-hangs-on-ios-ext - Build warning fix: Added a missing plugin dependency. - 43338942
+Deployed,Client,REAL-5379,,Wed Jun 11,,43339378,,43207629,iOS / Android,FORT-917423,IR Link,#sh-05-29-fn-asked-me-to-log-in-again-after-update-ext,No,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,Detect when we have a bad stored device token and clear the saved token in this case,FORT-917423 - #sh-05-29-fn-asked-me-to-log-in-again-after-update-ext - Detect when we have a bad stored device token and clear the saved token in this case - 43339378
+Deployed,Client,REAL-5379,,6/11/2025,,43339402,,43338815,iOS,FORT-920764,IR Link,#sh-06-08-ios-iap-rmt-high-error-rate-with-errortr-ext,No,Code,Yes,No,Yes,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,iOS purchase fix,FORT-920764 - #sh-06-08-ios-iap-rmt-high-error-rate-with-errortr-ext - iOS purchase fix - 43339402
+Rejected,Client,,,,,"CW Patch will be done for the EP, and is already done for the current Live CL",,43338483,UEFN Client,FORT-920768,IR Link,#sh-06-07-vk-play-servers-crashing-and-burning-ext,No,,,,,N/A,N/A,,,QA LINK,PF LINK,,,Approved,,"FORT-920768 - #sh-06-07-vk-play-servers-crashing-and-burning-ext -  - CW Patch will be done for the EP, and is already done for the current Live CL"
+Uncommitted,Client,none,,none,,43445522,,43427462,UEFN Client + CW,FORT-720968,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,Make DetectInaccessibleDependency parametric type argument checking version gate on the version of the package containing the definition being checked for inaccessible dependencies,FORT-720968 -  - Make DetectInaccessibleDependency parametric type argument checking version gate on the version of the package containing the definition being checked for inaccessible dependencies - 43445522
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Rejected,Client,,,,,,,43338351,,PLAY-89493,IR Link,sh-06-07-ai-reporting-missing-on-some-platforms-ext,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,,PLAY-89493 - sh-06-07-ai-reporting-missing-on-some-platforms-ext -  - 
+,,,,,,,,,,,,,,,,,,,,,,QA LINK,,,,,,
+Rejected,Server,This is a client and server change,,,,Maybe a 36.10 fix now?,,43186732,,FORT-917574,IR Link,#sh-06-03-server-and-potential-client-crash-from-d-ext,TBD,Code,TBD,TBD,N/A,N/A,N/A,TBD,TBD,QA LINK,PF LINK,,Approved,,Mark dynamic delegates as UPROPERTY to keep the listener's memory alive,FORT-917574 - #sh-06-03-server-and-potential-client-crash-from-d-ext - Mark dynamic delegates as UPROPERTY to keep the listener's memory alive - Maybe a 36.10 fix now?
+Deployed,Server,REAL-5377,,Sun Jun 8,,43335755,,43322044,VK Only,FORT-917468,IR Link,#sh-06-06-physics-crash-when-destroying-a-prop-ext,TBD,Code,Yes,No,N/A,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,[Newton] Fix Chaos Server Crash when destroying a physics prop,FORT-917468 - #sh-06-06-physics-crash-when-destroying-a-prop-ext - [Newton] Fix Chaos Server Crash when destroying a physics prop - 43335755
+Deployed,Server,REAL-5377,,Sun Jun 8,,43335413,,43334958,VK Play,FORT-920630,IR Link,#sh-06-07-vk-play-servers-crashing-and-burning-ext,No,Code,Yes,No,N/A,N/A,N/A,No,TBD,QA LINK,PF LINK,,,Approved,Speculative fix for server crash in UFortMovementComp_Character::UpdatePushedMovementModeExtensionBeforeMovement,FORT-920630 - #sh-06-07-vk-play-servers-crashing-and-burning-ext - Speculative fix for server crash in UFortMovementComp_Character::UpdatePushedMovementModeExtensionBeforeMovement - 43335413
+Deployed,Server,This is a client and server change,,Tue Jun 10,,43336054,,43239890,All,FORT-916905,IR Link,#sh-06-06-fmcpcacher-version-after-profile-delta-e-ext,Yes,Code,Yes,No,N/A,N/A,N/A,No,Verified Fixed,QA LINK,PF LINK,,Approved,Approved,"* Use profile revision rather than command revision for the mcp cache version
+* Disable MCPCachers (includes CVar to enable)","FORT-916905 - #sh-06-06-fmcpcacher-version-after-profile-delta-e-ext - * Use profile revision rather than command revision for the mcp cache version
+* Disable MCPCachers (includes CVar to enable) - 43336054"
+Deployed,Server,REAL-5384,,Tue Jun 10,,43370689,,43353246,All,FORT-920629,IR Link,#sh-06-07-vk-play-servers-crashing-and-burning-ext,No,Code,Yes,No,N/A,N/A,N/A,No,No,QA LINK,PF LINK,,Approved,Approved,Fix for using a template object with an incompatible type in ConstructDefaultObjectValueIfNecessary,FORT-920629 - #sh-06-07-vk-play-servers-crashing-and-burning-ext - Fix for using a template object with an incompatible type in ConstructDefaultObjectValueIfNecessary - 43370689
+Deployed,Server,REAL-5384,,Tue Jun 10,,43370703,,43357454,All,FORT-920760,IR Link,#sh-06-07-vk-play-servers-crashing-and-burning-ext,No,Code,Yes,No,N/A,N/A,N/A,No,Cannot Be Verified,QA LINK,PF LINK,,Approved,Approved,- Make iris use ObjectNetSerializer::IsEqual instead of property::Identical when comparing object pointers.,FORT-920760 - #sh-06-07-vk-play-servers-crashing-and-burning-ext - - Make iris use ObjectNetSerializer::IsEqual instead of property::Identical when comparing object pointers. - 43370703
+Rejected,Server,TBD,,ridealong - maybe Thursday,,TBD,,43380632,VK Fleets (maybe creative/feral/delmar-limited?),FORT-920758,IR Link,#sh-06-07-vk-play-servers-crashing-and-burning-ext,No,Code,Yes,No,N/A,N/A,N/A,No,TBD,QA LINK,PF LINK,,Approved,,[Iris] Crashfix - Early out when trying to write BitStreams with bitcount 0,FORT-920758 - #sh-06-07-vk-play-servers-crashing-and-burning-ext - [Iris] Crashfix - Early out when trying to write BitStreams with bitcount 0 - TBD
+Rejected,Server,TBD,,ridealong - maybe Thursday,,TBD,,43360084,"Creative, VK (no feral/delmar-limited)",FORT-920718,IR Link,NPC Spawner Issue,No,Content,No,No,N/A,N/A,N/A,No,TBD,QA LINK,PF LINK,,Approved,Approved,NPC spawner: Fix NPC count: count pending loading requests,FORT-920718 - NPC Spawner Issue - NPC spawner: Fix NPC count: count pending loading requests - TBD
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+,,,,,,,,,,,,,,,,,,,,,,QA LINK,,,,,,
+Deployed,MCP,REAL-5247,,Sat Jun 7,,43290594,,43249703,N/A,FORT-919158,IR Link,sh-06-05-shift-bp-superman-to-36-00-ext,No,N/A,N/A,N/A,N/A,No,Yes,N/A,Verified Fixed,QA LINK,N/A,,Approved,Approved,Adding wealthlambfate character and backbling to the 25 standalone and battle bundle offers,FORT-919158 - sh-06-05-shift-bp-superman-to-36-00-ext - Adding wealthlambfate character and backbling to the 25 standalone and battle bundle offers - 43290594
+Deployed,MCP,REAL-5374,,Sat Jun 7,,43334472,,43334462,N/A,FORT-920634,IR Link,sh-06-05-shift-bp-superman-to-36-00-ext,No,N/A,N/A,N/A,N/A,No,Yes,N/A,Verified Fixed,QA LINK,N/A,,Approved,Approved,Fix incorrect cape grant for the battlepass,FORT-920634 - sh-06-05-shift-bp-superman-to-36-00-ext - Fix incorrect cape grant for the battlepass - 43334472
+Deployed,MCP,REAL-5374,,Sat Jun 7,,43334690,,43334607,N/A,FORT-920644,IR Link,#sh-06-07-36-00-launch-dynamic-xp-inconsistencies-ext,Yes,N/A,N/A,N/A,N/A,No,N/A,N/A,Verified Fixed,QA LINK,N/A,,,Approved,Fix NPE in xp analytics,FORT-920644 - #sh-06-07-36-00-launch-dynamic-xp-inconsistencies-ext - Fix NPE in xp analytics - 43334690
+Deployed,MCP,REAL-5374,,Sat Jun 7,,43335609,,43335175,N/A,FORT-920644,IR Link,#sh-06-07-36-00-launch-dynamic-xp-inconsistencies-ext,Yes,N/A,N/A,N/A,N/A,No,N/A,N/A,In Progress,QA LINK,N/A,,,Approved,Fix XP Ledger Logjam,FORT-920644 - #sh-06-07-36-00-launch-dynamic-xp-inconsistencies-ext - Fix XP Ledger Logjam - 43335609
+Deployed,MCP,REAL-5381,,Sun Jun 8,,43338024,,43337805,N/A,FORT-920731,IR Link,#sh-06-08-robins-classic-colors-back-bling-style-n-ext,No,N/A,N/A,N/A,N/A,No,Yes,N/A,In Progress,QA LINK,N/A,,Approved,Approved,Fix for BP style not being granted,FORT-920731 - #sh-06-08-robins-classic-colors-back-bling-style-n-ext - Fix for BP style not being granted - 43338024
+Deployed,MCP,REAL-5381,,Sun Jun 8,,43338070,,43337974,N/A,FORT-920735,IR Link,#sh-06-08-storm-beast-style-is-not-granted-after-u-ext,No,N/A,N/A,N/A,N/A,No,Yes,N/A,In Progress,QA LINK,N/A,,Approved,Approved,Fix for BP style not being granted,FORT-920735 - #sh-06-08-storm-beast-style-is-not-granted-after-u-ext - Fix for BP style not being granted - 43338070
+Deployed,MCP,REAL-5383,,Tue Jun 10,,43358620,,43266078,N/A,FORT-919387,IR Link,private #pub-korea-pcb-core-team,No,N/A,N/A,N/A,N/A,No,Yes,N/A,Verified Fixed,QA LINK,N/A,,Approved,Approved,Change Korea login bonus goftbox type,FORT-919387 - private #pub-korea-pcb-core-team - Change Korea login bonus goftbox type - 43358620
+Deployed,MCP,REAL-5383,,Tue Jun 10,,43385649,,43381890,N/A,FORT-920090,IR Link,Mobile Shop Continuous Notification,,N/A,N/A,N/A,N/A,No,N/A,N/A,Verified Fixed,QA LINK,N/A,,Approved,Approved,Fix for attempting to grant mobile rewards to the athena profile when doing a shop purchase,FORT-920090 - Mobile Shop Continuous Notification - Fix for attempting to grant mobile rewards to the athena profile when doing a shop purchase - 43385649
+Deployed,MCP,REAL-5391,,Wed Jun 11,,43426772,,43414245,N/A,FORT-922315,IR Link,#sh-06-10-missing-purchases-on-ios-ext,No,N/A,N/A,N/A,N/A,No,Yes,N/A,Verified Fixed,QA LINK,N/A,,Approved,Approved,"Adding iOS app Store ID for Saint Academy Quest Pack (CalavaryAlt_Cpack), Magma Masters (Magma_legends), Last Laugh Bundle (LastLaugh_Digital)","FORT-922315 - #sh-06-10-missing-purchases-on-ios-ext - Adding iOS app Store ID for Saint Academy Quest Pack (CalavaryAlt_Cpack), Magma Masters (Magma_legends), Last Laugh Bundle (LastLaugh_Digital) - 43426772"
+Deployed,MCP,REAL-5400,,Sat Jun 14,,43519249,,43484982,N/A,FORT-923964,IR Link,#sh-06-12-36-10-release-delay-ext,No,N/A,N/A,N/A,N/A,No,Yes,N/A,Verified Fixed,QA LINK,N/A,,,Approved,Adjusting the final 3 BP rewards pages to unlock after 17 days after season start instead of 16,FORT-923964 - #sh-06-12-36-10-release-delay-ext - Adjusting the final 3 BP rewards pages to unlock after 17 days after season start instead of 16 - 43519249
+Deployed,MCP,REAL-5400,,Sat Jun 14,,43528823,,43528773,N/A,FORT-924619,IR Link,#sh-06-14-lava-legends-pack-advertises-firestarter-ext,No,N/A,N/A,N/A,N/A,No,Yes,N/A,TBD,QA LINK,N/A,,,,Adjusting LayoutID to remove in-shop offer for Lava Legends RMT,FORT-924619 - #sh-06-14-lava-legends-pack-advertises-firestarter-ext - Adjusting LayoutID to remove in-shop offer for Lava Legends RMT - 43528823
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+,,,,,,,,,,,,,,,,,,,,,,QA LINK,,,,,,
+Deployed,CW,,,,,43352761,,43338483,N/A,FORT-920768,IR Link,#sh-06-07-vk-play-servers-crashing-and-burning-ext,No,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,Approved,Fix for running a check that wasn't intended to be run on projects uploaded pre-introduction of `DetectInaccessibleTypeArguments`,FORT-920768 - #sh-06-07-vk-play-servers-crashing-and-burning-ext - Fix for running a check that wasn't intended to be run on projects uploaded pre-introduction of `DetectInaccessibleTypeArguments` - 43352761
+Deployed,CW,Also on Line 5,,,,43335957,,43335758,N/A,UE-295113,IR Link,#sh-06-07-assets-digest-errors-block-launch-in-36-ext,No,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,,UE-295113 - #sh-06-07-assets-digest-errors-block-launch-in-36-ext -  - 43335957
+Committed,CW,TBD,,TBD,,43392785,,43373338,N/A,FORT-921402,IR Link,Issue when uploading Fab packs to the Content Service,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,Approved,"[UEFN] Get rid of validation ""private project cannot have a public asset"" because private modules can be referenced by other modules in the same project","FORT-921402 - Issue when uploading Fab packs to the Content Service - [UEFN] Get rid of validation ""private project cannot have a public asset"" because private modules can be referenced by other modules in the same project - 43392785"
+Committed,CW,TBD,,TBD,,43445522,,43445212,N/A,FORT-720968,IR Link,For islands that are breaking in publishing as part of #sh-06-07-vk-play-servers-crashing-and-burning-ext,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,Make DetectInaccessibleDependency parametric type argument checking version gate on the version of the package containing the definition being checked for inaccessible dependencies,FORT-720968 - For islands that are breaking in publishing as part of #sh-06-07-vk-play-servers-crashing-and-burning-ext - Make DetectInaccessibleDependency parametric type argument checking version gate on the version of the package containing the definition being checked for inaccessible dependencies - 43445522
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+,,,,,,,,,,,,,,,,,,,,,,QA LINK,,,,,,
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Deployed,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Rejected,,,,,,,,,,,,,,,,,,,,,,,,,,,,

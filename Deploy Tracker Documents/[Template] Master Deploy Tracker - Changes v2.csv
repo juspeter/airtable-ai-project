@@ -1,0 +1,93 @@
+Status,Type,Notes,,"Target 
+Deploy 
+Date
+
+(Double Click Cell)",,Commit CL,,"Pre-Commit Swarm Link
+
+(See This Cell's Notes If Red)","Client Platforms 
+/ 
+Server Fleets Affected",JIRA,"#fn-integration-requests-ext
+
+Link","Comms Link
+(SH / Other Thread)","Multi Product Impact?
+
+(See This Cells Notes)","Code or
+Content?","Safe as Code Only? 
+(hover over cell for details)",Client/Server Compatibility Concerns?,Staggered Platform Rollout?,Does This Require A Profile Migration?,Includes Export JSON File?,Gameplay Tags Added/Removed?,"Embedded QA Verification Prior to Commit?
+
+(Link Thread)",Link to QA Testing / Sign Off,Link to Horde Pre Flight,"Risk Mitigation Form Completed & RM Reviewed?
+
+(Link Thread)",AllowLister Approved?,TD Approved?,JIRA / Swarm Summary,REAL-XX Descrp
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Client,,,,,,,,,,IR Link,,,,,,,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+,,,,,,,,,,,,,,,,,,,,,,QA LINK,,,,,,
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,Server,,,,,,,,,,IR Link,,,,,,N/A,N/A,N/A,,,QA LINK,PF LINK,,,,, -  -  - 
+,,,,,,,,,,,,,,,,,,,,,,QA LINK,,,,,,
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+Uncommitted,MCP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,,,N/A,,QA LINK,N/A,,,,, -  -  - 
+,,,,,,,,,,,,,,,,,,,,,,QA LINK,,,,,,
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,CW,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+,,,,,,,,,,,,,,,,,,,,,,QA LINK,,,,,,
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Uncommitted,1PP,,,,,,,,N/A,,IR Link,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,,QA LINK,PF LINK,,,,, -  -  - 
+Deployed,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Rejected,,,,,,,,,,,,,,,,,,,,,,,,,,,,

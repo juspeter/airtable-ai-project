@@ -1,0 +1,186 @@
+Release:,34.10,Release-34.10,,,,,,Update if Needed,,,"1. Click Cell A1
+2. Press Ctrl+F > push the 3 dots
+3. Find the string ""CHECKLIST_VERSION"" and replace it with the real value
+   a. ex. Find: CHECKLIST_VERSION          Replace with 32.00
+          ^Checklist dot Version^
+4. Select the ""Replace All"" button to swap all instances
+4. Repeat steps 3-4 by replacing PREVIOUS_VERSION with 31.40
+                                        ^Previous Version^
+5. Repeat steps 3-4 by replacing CHECKLIST-VERSION with 32-00 
+                                            ^Checklist dash Version^
+6. Repeat steps 3-4 by replacing NEXT_VERSION with 32.10
+                                             ^Next Version^
+7. Repeat steps 3-4 by replacing NEXT_MAJOR_VERSION with 33.00
+                                    ^Next Major Version (.00)^
+
+You will know it worked if all red text in this cell/sheet has been updated to the set values"
+Branch Open Date:,Thu Jul 17,Jira Ticket:,,,,,CHECKLIST_VERSION,34.10,,Do if Replace Button does not work! -->>,
+Hard Lock:,Fri Jul 18,ROS Sheet:,,,,,PREVIOUS_VERSION,34.00,,,
+Pencils Down:,Sat Jul 19,ROS Zoom:,,,,,NEXT_VERSION,34.20,,,
+Cert Submission:,Sun Jul 20,JIRA DASHBOARD:,,,,,NEXT_MAJOR_VERSION,35.00,,,
+ROW Deploy:,Mon Jul 21,Slack Channel:,https://slack.com/app_redirect?channel=fn-release-34-10-ext,,,,,,,,
+,,,,,,,,,,,
+,,,,,,,,,,,
+Outstanding Issues: ,,,,,,,,,,,
+Ops:,,,Production:,,,Submisions:,,,,,
+7/10/2025,TODO,Branching Dates Slack Email Kickoff,7/10/2025,TODO,Replacing template text in this checklist,7/16/2025,TODO,Request Patches: Create New Release for Nintendo,,,
+7/13/2025,TODO,Branching Email - Go Ahead and Sync Reply,7/10/2025,TODO,Add this sheet's ID to the Workato checklist sheet,7/16/2025,TODO,Request Patches: Fill out and submit new OMAS for Nintendo,,,
+7/17/2025,TODO,"Branching Email - Branch is now fully open!
+
+AND
+
+Update [Release-Archive-Hardcore] section in lockdown_config.ini",7/12/2025,TODO,"Send Slack Review For Untriaged Pre-SH & QA High Risk JIRAs:
+
+Keep this checklist item open until closer to CERT to continue to refresh and escalate issues added",7/16/2025,TODO,Request Patches: SIEA (07022)  (07022) - WIKI,,,
+7/17/2025,TODO,"Ensure ""Time Offset"" is set to the main branches' season start date 
+
+",7/12/2025,TODO,"Send Slack Review For Untriaged Escaped Crashes / Asserts / Ensures JIRAs:
+
+Keep this checklist item open until closer to CERT to continue to refresh and escalate issues added",7/16/2025,TODO,Request Patches: SIEE (07669)  (07669) - WIKI,,,
+7/17/2025,TODO,Check that UGS banner is updated to include Release Schedule & JIRA filter link,7/15/2025,TODO,Release Content Legal Approval has Started,7/16/2025,TODO,Request Patches: PS5 Shared,,,
+7/17/2025,TODO,Update DEV-FN-XX MOTD to notify it is being sunset and to stop working in it,7/17/2025,TODO,"Send Slack Review For Untriaged Pre-SH & QA High Risk JIRAs:
+
+Keep this checklist item open until closer to CERT to continue to refresh and escalate issues added",7/16/2025,TODO,Create Version on App Store Connect and check if any Publishing metadata updates are needed,,,
+7/17/2025,TODO,Verify UGS MOTD in Main Shows Updated Information,7/17/2025,TODO,"Send Slack Review For Pre-SH & QA High Risk that are assigned to the current release:
+
+Keep this checklist item open until closer to CERT to continue to refresh and escalate issues added",7/17/2025,TODO,Ensure Sony publishing tools are up to date,,,
+7/17/2025,TODO,"Enable Scheduled Horde Jobs
+",7/17/2025,TODO,"Release Content Legal Approval (FN and UEFN content)
+   Cosmetic Content Assets Sheet",7/17/2025,TODO,Make sure PS4 SIEE (07669)  packages are being built,,,
+7/17/2025,TODO,Create Season Run of Show sheet for orchestrating the teams,7/17/2025,TODO,Create fn-release-CHECKLIST-VERSION-ext Slack channel and invite groups/users listed in Columns H/I,7/18/2025,TODO,Get engineer sign off of patch Sizes,,,
+7/17/2025,TODO,Inform the slack channel of the bookmarked links,7/17/2025,TODO,Create Release Request,7/18/2025,TODO,Review the Cert issues filter to make sure nothing egregious still needs to be fixed,,,
+7/17/2025,TODO,Create Deploy Tracker sheet and bookmark in release channel,7/17/2025,TODO,Create Release JIRA Dashboard,7/19/2025,TODO,"FortniteContentBuilds: 
+ - This is Content On Demand (downloading additional stuff in the background which is only present on some platforms)
+ 
+Verify platforms below have been updated correctly:
+
+ - PC/Windows
+ - Android
+ - PS4
+ - PS5
+ - Switch
+ - XB1
+ - XSX
+ - iOS
+
+Old Wiki",,,
+7/17/2025,TODO,Ensure code only builds are working properly including verification it can be successfully promoted,7/17/2025,TODO,Generate Release Controller Permalink,7/19/2025,TODO,Verify that the PS5/PS4 versioning is correct for the release. ,,,
+7/18/2025,TODO,All Remaining Build Errors/Warnings Have Been Approved To Ship With,7/17/2025,TODO,Set Slack channel Topic to Release Manager and Dashboard Link,7/19/2025,TODO,Make sure SwitchEngine version has been incremented.,,,
+7/18/2025,TODO,Verify Android version number has been updated in perforce,7/17/2025,TODO,Setup Release Dashboard's Top Widget,7/19/2025,TODO,Verify that LatestPatch folder contains last released patches,,,
+7/18/2025,TODO,Verify iOS version number has been updated in perforce,7/17/2025,TODO,"Cross check Fortnite Release Calendar below dates are accurate for all versions from this checklist's season and the following season found in the FN Release Schedule and populated from the Air Table
+
+   - Row 16: Branch Opening
+   - Row 17: Development Complete
+   - Row 18: Hard Lock
+   - Row 19: Pencils Down
+   - Row 20: Cert Sub
+   - Row 5: Live
+   - Row 5 of next column(s): HF(s) Live",7/19/2025,TODO,Verify the file system captures for Nintendo have been gathered by QA,,,
+7/18/2025,TODO,Verify Version Locking AND that the Net Version locked to is different than the currently live branch,7/17/2025,TODO,Create a Jira for BR Calendar/Store/Shop to be update/reviewed ,7/20/2025,TODO,Create a cert thread in the Release channel.,,,
+7/18/2025,TODO,Set NetCL Version Number,7/17/2025,TODO,"Verify BranchFoundIn in JIRA is already populated for CHECKLIST_VERSION
+if not, request it be done in #fn-jira-admins-ext",7/20/2025,TODO,Update Release Log and Release Request,,,
+7/18/2025,TODO,Add Temporary Allowlisters to lockdown file,7/17/2025,TODO,Schedule Google Calendar Meeting: Stability Sync,7/20/2025,TODO,Make local copies to your station for all platforms going to certification,,,
+7/18/2025,TODO,Update MOTD in UGS for Hardlock,7/17/2025,TODO,Schedule Google Calendar Meeting: Post Mortem,7/20/2025,TODO,"Add build info to the relevant cert backends.
+(CCA/ CCB / MobileCert)",,,
+7/18/2025,TODO,Release Owner: Log into all deploy-related tools,7/17/2025,TODO,"Schedule Calendar Events:
+- Hard Lock 
+- Pencils Down ",7/20/2025,TODO,"Set up the above cert environments to have the correct:
+ - Server (CCA / CCB / DPQ / MobileCert)
+ - MCP (CCA / CCB / DPQ / MobileCert)",,,
+7/19/2025,TODO,Get Folder Comparison sign off from Anticheat for PC and UEFN,7/17/2025,TODO,"Determine Deploy Time with the below teams:
+
+- Live Ops
+- Competitive
+- Publishing/Marketing",7/20/2025,TODO,Ensure cert backends are online (CCA / CCB / DPQ / MobileCert),,,
+7/19/2025,TODO,Update the metastream UE robomerge connection to point to NEXT_VERSION,7/17/2025,TODO,"For XX.00 Deploys Only:
+
+Reminder messaging for seasonal Hotfix clean up",7/20/2025,TODO,CertSub Candidate: Patch Sizes,,,
+7/19/2025,TODO,Lock the DAD CL,7/18/2025,TODO,"Send Release Strategy email
+
+Confluence Wiki (need to merge all the things) 
+
+Wiki on creating the meeting calendar event
+
+Template (if not copied from a previous email)",7/20/2025,TODO,"Send Akamai early estimate of patch sizes
+ - Email",,,
+7/19/2025,TODO,Ensure Modes & Tags are setup in DS Portal for Release QA Whiteglove,7/18/2025,TODO,"Redundancy:
+Make sure zoom links are still valid for all meetings related to CHECKLIST_VERSION",7/20/2025,TODO,"Notify Nvidia of the upcoming patch date and time
+ - Email",,,
+7/19/2025,TODO,Remove Temporary Allow Listed - 8PM ET,7/18/2025,TODO,Coordinate Discovery surface and link updates for any new playlists ,7/20/2025,TODO,"Notify AWS of the upcoming patch date, time, and sizes
+ - Email",,,
+7/19/2025,TODO,Enable Robomerge Gate - 8PM ET,7/18/2025,TODO,"Verify Final DOT Links for WG testing are accurate and no changes are expected.
+
+
+https://epicenter.on.epicgames.com/?tools=all",7/20/2025,TODO,"Notify Fastly of the upcoming patch date, time, and patch sizes
+ - Slack Post ",,,
+7/19/2025,TODO,Move Festival CMS job to the next Release,7/18/2025,TODO,Ensure Final Shop is in for WG testing,7/20/2025,TODO,"Notify Akamai of the upcoming patch date, time, and patch sizes
+ - Slack Post ",,,
+7/19/2025,TODO,Identify team for release day and update Release Request,7/19/2025,TODO,Make sure Disallow List has Started (Data Encryption),7/20/2025,TODO,"Notify Cloudflare channel of the upcoming patch date, time, and patch sizes
+ - Slack Post ",,,
+7/19/2025,TODO,Kick Cert Build,7/19/2025,TODO,"Confirm the final loc commit job successfully makes it into P4
+
+Need to ask for:
+- Fortnite
+- UEFN
+- Lego
+- Festival
+- Rocket Racing",7/20/2025,TODO,"Notify ISP email group alias of the upcoming patch date, time and patch sizes
+ - Email",,,
+7/19/2025,TODO,Update Scheduled Builds. SSB Current and Next,7/19/2025,TODO,"Request Final DAD revision for pre whiteglove
+
+https://epicenter.on.epicgames.com/?tools=all
+
+
+For reference: https://epicgames.slack.com/archives/C08DLJG51L7/p1742565116008119",7/20/2025,TODO,Request Patches: Email Xbox Account Manager,,,
+7/20/2025,TODO,Generate Optimized Patches (chunkdbs) for all platforms delpoying,7/19/2025,TODO,"1st touchpoint with Calendar owners
+
+Typically you get sign off from all but BR (Shop & Non-Shop)",7/20/2025,TODO,Update DevNet Thread with Incoming Patch Information,,,
+7/20/2025,TODO,Final Client Build Protection,7/19/2025,TODO,"Send Last Call bump for callouts in the Release Strategy Email. 
+
+WIKI",7/20/2025,TODO,Upload Nintendo ROM and complete pre-submit waiver requests,,,
+7/20/2025,TODO,Final Server Build Protection,7/19/2025,TODO,"Determine Ship List (using the below Airtable) and pin it in Slack
+
+New Hotness: 
+Deliverables Roadmap
+Build View",7/20/2025,TODO,Submit Switch the Switch build to lotcheck,,,
+7/20/2025,TODO,Disable remaining unneeded builds,7/19/2025,TODO,"Whiteglove has been completed on INITIAL release candidate (aka crit checks) and issues called out have been threaded/escalated for triage
+
+Note: We will never be releasing this build. There will always be another CL for our final candidate (THIS LINE)",7/20/2025,TODO,Submit IOS for Notarization,,,
+7/20/2025,TODO,Verify no new client CLs have been introduced between Final Client WhiteGlove and Final Server/MCP WhiteGlove tests.,7/19/2025,TODO,Whiteglove has been completed on FINAL release candidate (aka Cert Checks) and issues called out have been threaded for triage,7/20/2025,TODO,Upload SIEA (07022)  build,,,
+7/20/2025,TODO,Confirm with Discovery team that the Analytics Stuff revision has been deployed to Live,7/19/2025,TODO,Confirm Release QA is patched up and ready for the morning,7/20/2025,TODO,Upload SIEE (07669)  build,,,
+7/20/2025,TODO,Verify Release Request is accurate,7/20/2025,TODO,"Make sure Disallow List was reviewed
+(FN, FNE (Creative+UEFN), JUNO, DelMar, Sparks terms)",7/20/2025,TODO,Upload PS5 shared binary,,,
+7/20/2025,TODO,Pre-upload symbols for the following (Within 24 hours of deployment),7/20/2025,TODO,Aegis Prewarm (Final Client and Server CL),7/20/2025,TODO,Upload the Luna Client and send it to certification,,,
+,,,7/20/2025,TODO,2nd touchpoint with Calendar owners,7/20/2025,TODO,"Upload XB builds, verify the validator logs, and submit to cert.",,,
+,,,7/20/2025,TODO,"Release Strategy Async Post
+
+Example Post: LINK",7/20/2025,TODO,Complete and save final MDT (PS5),,,
+,,,,,,7/20/2025,TODO,Update MDT: SIEA,,,
+,,,,,,7/20/2025,TODO,Update MDT: SIEE,,,
+,,,,,,7/20/2025,TODO,Rapid patch Submission: SIEA (07022) ,,,
+,,,,,,7/20/2025,TODO,Rapid patch Submission: SIEE (07669) ,,,
+,,,,,,7/20/2025,TODO,Rapid patch Submission: PS5,,,
+,,,,,,7/20/2025,TODO,Final Scheduling: Xbox One / XSX,,,
+,,,,,,7/20/2025,TODO,Final Scheduling PS5,,,
+,,,,,,7/20/2025,TODO,Final Scheduling PS4,,,
+,,,,,,7/20/2025,TODO,Upload PS4 Symbols to devnet,,,
+,,,,,,7/20/2025,TODO,Upload PS5 Symbols to devnet,,,
+,,,,,,7/20/2025,TODO,Upload XB1/XSX crash symbols through Xbox Send,,,
+,,,,,,7/20/2025,TODO,Final Scheduling: Switch,,,
+,,,,,,7/20/2025,TODO,Submit Build to One Store,,,
+,,,,,,7/20/2025,TODO,Upload the Digital Turbine Candidate ,,,
+,,,,,,7/20/2025,TODO,Submit Android build to Oppo,,,
+,,,,,,7/20/2025,TODO,Confirm with Luna that we're through certification. ,,,
+,,,,,,7/20/2025,TODO,Remove Cert Redirects,,,
+,,,,,,7/20/2025,TODO,Spindown Cert Servers,,,
+,,,,,,7/20/2025,TODO,Live: Update PS4/PS5/XB1/XSX/IOS fake Build Info,,,
+,,,,,,7/20/2025,TODO,Live: Update Switch Build Info,,,
+,,,,,,7/20/2025,TODO,Live: Update Android Build Info,,,
+,,,,,,7/20/2025,TODO,Prep AltStore Stage Source,,,
+,,,,,,7/20/2025,TODO,"Schedule Lightswitch Down in Admin Portal
+   - Scheduling MUST happen at least 1 hour before the downtime start",,,
+,,,,,,7/20/2025,TODO,"Internal Release Email
+   Template",,,
+,,,,,,7/20/2025,TODO,"External Release Email
+    Template",,,
+,,,,,,7/20/2025,TODO,"Send ""Release is a GO"" email",,,

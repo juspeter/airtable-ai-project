@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Output directories
+output/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Analysis results (may contain sensitive data)
+analysis/*.json
+analysis/*.csv
+analysis/reports/
+
+# Backup files
+*.bak
+*.backup
+
+# API response caches
+.airtable-cache/
+
+# Test coverage
+coverage/
+.nyc_output/

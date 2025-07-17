@@ -1,0 +1,716 @@
+{
+  "tables": {
+    "checklistTemplates": {
+      "name": "Checklist Templates",
+      "purpose": "Master templates for different checklist types",
+      "fields": {
+        "Template Name": {
+          "type": "Single line text",
+          "description": "e.g., Operations Checklist V5"
+        },
+        "Template Type": {
+          "type": "Single select",
+          "options": [
+            "Operations",
+            "Production",
+            "Submissions"
+          ]
+        },
+        "Version": {
+          "type": "Single line text",
+          "description": "Template version"
+        },
+        "Active": {
+          "type": "Checkbox",
+          "description": "Is this template currently active?"
+        },
+        "Tasks": {
+          "type": "Link to another record",
+          "linkedTable": "Task Templates"
+        },
+        "Created Date": {
+          "type": "Created time"
+        },
+        "Created By": {
+          "type": "Created by"
+        },
+        "Notes": {
+          "type": "Long text",
+          "description": "Template notes and changelog"
+        }
+      }
+    },
+    "taskTemplates": {
+      "name": "Task Templates",
+      "purpose": "Individual task definitions that can be reused across releases",
+      "fields": {
+        "Task Name": {
+          "type": "Single line text",
+          "description": "e.g., Verify Android version number"
+        },
+        "Task Type": {
+          "type": "Single select",
+          "options": [
+            "Operations",
+            "Production",
+            "Submissions"
+          ]
+        },
+        "Category": {
+          "type": "Single select",
+          "options": [
+            "Build Health",
+            "Platform Management",
+            "Content",
+            "Certification",
+            "Infrastructure"
+          ]
+        },
+        "Description": {
+          "type": "Long text",
+          "description": "Detailed task description"
+        },
+        "Steps to Complete": {
+          "type": "Long text",
+          "description": "Step-by-step instructions"
+        },
+        "Duration Estimate": {
+          "type": "Number",
+          "description": "Estimated hours to complete"
+        },
+        "Dependencies": {
+          "type": "Link to another record",
+          "linkedTable": "Task Templates",
+          "description": "Tasks that must be completed first"
+        },
+        "Milestone Trigger": {
+          "type": "Single select",
+          "options": [
+            "Branch Open",
+            "Hard Lock",
+            "Pencils Down",
+            "Cert Submission",
+            "Live",
+            "Post-Live"
+          ]
+        },
+        "Offset Days": {
+          "type": "Number",
+          "description": "Days before/after milestone (-2 = 2 days before)"
+        },
+        "Automation Eligible": {
+          "type": "Checkbox",
+          "description": "Can this task be automated?"
+        },
+        "JIRA Integration": {
+          "type": "Checkbox",
+          "description": "Does this task interact with JIRA?"
+        },
+        "Slack Template": {
+          "type": "Long text",
+          "description": "Pre-written Slack message template"
+        },
+        "Required Approvals": {
+          "type": "Multiple select",
+          "options": [
+            "AllowLister",
+            "TD",
+            "QA",
+            "Legal",
+            "Security"
+          ]
+        },
+        "Platform Specific": {
+          "type": "Multiple select",
+          "options": [
+            "PC",
+            "PS4",
+            "PS5",
+            "Xbox",
+            "Switch",
+            "iOS",
+            "Android"
+          ]
+        },
+        "Risk Level": {
+          "type": "Single select",
+          "options": [
+            "Low",
+            "Medium",
+            "High",
+            "Critical"
+          ]
+        },
+        "SLA Hours": {
+          "type": "Number",
+          "description": "Maximum hours to complete after due date"
+        }
+      }
+    },
+    "releaseInstances": {
+      "name": "Release Instances",
+      "purpose": "Specific release instances (e.g., 36.00, 36.10)",
+      "fields": {
+        "Release Version": {
+          "type": "Single line text",
+          "description": "e.g., 36.00"
+        },
+        "Release Type": {
+          "type": "Single select",
+          "options": [
+            "Major Release",
+            "Hotfix",
+            "Emergency Patch"
+          ]
+        },
+        "Status": {
+          "type": "Single select",
+          "options": [
+            "Planning",
+            "In Progress",
+            "Completed",
+            "Cancelled"
+          ]
+        },
+        "Branch Open Date": {
+          "type": "Date"
+        },
+        "Hard Lock Date": {
+          "type": "Date"
+        },
+        "Pencils Down Date": {
+          "type": "Date"
+        },
+        "Cert Submission Date": {
+          "type": "Date"
+        },
+        "Live Date": {
+          "type": "Date"
+        },
+        "Release Manager": {
+          "type": "Link to another record",
+          "linkedTable": "Release Team"
+        },
+        "Slack Channel": {
+          "type": "URL",
+          "description": "fn-release-XX-XX-ext channel"
+        },
+        "JIRA Dashboard": {
+          "type": "URL"
+        },
+        "Deploy Tracker": {
+          "type": "Link to another record",
+          "linkedTable": "Deploy Trackers"
+        },
+        "Active Tasks": {
+          "type": "Link to another record",
+          "linkedTable": "Release Tasks"
+        },
+        "Health Score": {
+          "type": "Number",
+          "description": "Overall release health 0-100"
+        },
+        "Risk Assessment": {
+          "type": "Single select",
+          "options": [
+            "Low",
+            "Medium",
+            "High",
+            "Critical"
+          ]
+        },
+        "Notes": {
+          "type": "Long text"
+        }
+      }
+    },
+    "releaseTasks": {
+      "name": "Release Tasks",
+      "purpose": "Active tasks for specific releases",
+      "fields": {
+        "Task Name": {
+          "type": "Lookup",
+          "linkedField": "Task Templates.Task Name"
+        },
+        "Release": {
+          "type": "Link to another record",
+          "linkedTable": "Release Instances"
+        },
+        "Template": {
+          "type": "Link to another record",
+          "linkedTable": "Task Templates"
+        },
+        "Assigned To": {
+          "type": "Link to another record",
+          "linkedTable": "Release Team"
+        },
+        "Status": {
+          "type": "Single select",
+          "options": [
+            "Not Started",
+            "In Progress",
+            "Blocked",
+            "Completed",
+            "Skipped"
+          ]
+        },
+        "Due Date": {
+          "type": "Formula",
+          "description": "Calculated from milestone + offset"
+        },
+        "Completed Date": {
+          "type": "Date"
+        },
+        "Completed By": {
+          "type": "Link to another record",
+          "linkedTable": "Release Team"
+        },
+        "Dependencies Met": {
+          "type": "Formula",
+          "description": "Are all dependency tasks completed?"
+        },
+        "Overdue": {
+          "type": "Formula",
+          "description": "Is task past due date?"
+        },
+        "Hours Spent": {
+          "type": "Number"
+        },
+        "Approval Status": {
+          "type": "Single select",
+          "options": [
+            "Not Required",
+            "Pending",
+            "Approved",
+            "Rejected"
+          ]
+        },
+        "Approver": {
+          "type": "Link to another record",
+          "linkedTable": "Release Team"
+        },
+        "Approval Date": {
+          "type": "Date"
+        },
+        "JIRA Ticket": {
+          "type": "URL"
+        },
+        "Slack Thread": {
+          "type": "URL"
+        },
+        "Notes": {
+          "type": "Long text"
+        },
+        "Risk Issues": {
+          "type": "Long text",
+          "description": "Any problems or concerns"
+        },
+        "Automation Status": {
+          "type": "Single select",
+          "options": [
+            "Manual",
+            "Partially Automated",
+            "Fully Automated",
+            "Failed Automation"
+          ]
+        }
+      }
+    },
+    "deployTrackers": {
+      "name": "Deploy Trackers",
+      "purpose": "Post-release change and incident tracking",
+      "fields": {
+        "Release": {
+          "type": "Link to another record",
+          "linkedTable": "Release Instances"
+        },
+        "Tracker Type": {
+          "type": "Single select",
+          "options": [
+            "Changes",
+            "ShitHappens",
+            "Stability"
+          ]
+        },
+        "Status": {
+          "type": "Single select",
+          "options": [
+            "Active",
+            "Completed",
+            "Archived"
+          ]
+        },
+        "Changes": {
+          "type": "Link to another record",
+          "linkedTable": "Release Changes"
+        },
+        "Incidents": {
+          "type": "Link to another record",
+          "linkedTable": "Post Release Incidents"
+        },
+        "Stability Metrics": {
+          "type": "Link to another record",
+          "linkedTable": "Stability Metrics"
+        },
+        "Created Date": {
+          "type": "Created time"
+        },
+        "Last Updated": {
+          "type": "Last modified time"
+        }
+      }
+    },
+    "releaseChanges": {
+      "name": "Release Changes",
+      "purpose": "Track post-release code/content changes",
+      "fields": {
+        "Deploy Tracker": {
+          "type": "Link to another record",
+          "linkedTable": "Deploy Trackers"
+        },
+        "Change ID": {
+          "type": "Autonumber"
+        },
+        "Status": {
+          "type": "Single select",
+          "options": [
+            "Uncommitted",
+            "Committed",
+            "Deployed",
+            "Rolled Back"
+          ]
+        },
+        "Change Type": {
+          "type": "Single select",
+          "options": [
+            "Client",
+            "Server",
+            "Content",
+            "Config"
+          ]
+        },
+        "Target Deploy Date": {
+          "type": "Date"
+        },
+        "Actual Deploy Date": {
+          "type": "Date"
+        },
+        "Commit CL": {
+          "type": "Single line text",
+          "description": "Perforce changelist number"
+        },
+        "Swarm Link": {
+          "type": "URL"
+        },
+        "JIRA Ticket": {
+          "type": "URL"
+        },
+        "Platforms Affected": {
+          "type": "Multiple select",
+          "options": [
+            "PC",
+            "PS4",
+            "PS5",
+            "Xbox",
+            "Switch",
+            "iOS",
+            "Android"
+          ]
+        },
+        "Multi Product Impact": {
+          "type": "Checkbox"
+        },
+        "Code or Content": {
+          "type": "Single select",
+          "options": [
+            "Code",
+            "Content",
+            "Both"
+          ]
+        },
+        "Safe as Code Only": {
+          "type": "Checkbox"
+        },
+        "Compatibility Concerns": {
+          "type": "Checkbox"
+        },
+        "Staggered Rollout": {
+          "type": "Checkbox"
+        },
+        "Profile Migration Required": {
+          "type": "Checkbox"
+        },
+        "AllowLister Approved": {
+          "type": "Checkbox"
+        },
+        "TD Approved": {
+          "type": "Checkbox"
+        },
+        "QA Verified": {
+          "type": "Checkbox"
+        },
+        "Risk Level": {
+          "type": "Single select",
+          "options": [
+            "Low",
+            "Medium",
+            "High",
+            "Critical"
+          ]
+        },
+        "Description": {
+          "type": "Long text"
+        },
+        "Notes": {
+          "type": "Long text"
+        }
+      }
+    },
+    "stabilityMetrics": {
+      "name": "Stability Metrics",
+      "purpose": "Automated Grafana metrics tracking",
+      "fields": {
+        "Deploy Tracker": {
+          "type": "Link to another record",
+          "linkedTable": "Deploy Trackers"
+        },
+        "Metric Name": {
+          "type": "Single line text"
+        },
+        "Metric Type": {
+          "type": "Single select",
+          "options": [
+            "Crash Rate",
+            "Performance",
+            "Player Count",
+            "Server Health"
+          ]
+        },
+        "Value": {
+          "type": "Number"
+        },
+        "Baseline": {
+          "type": "Number",
+          "description": "Expected normal value"
+        },
+        "Threshold": {
+          "type": "Number",
+          "description": "Alert threshold"
+        },
+        "Status": {
+          "type": "Formula",
+          "description": "Normal/Warning/Critical based on threshold"
+        },
+        "Timestamp": {
+          "type": "Date"
+        },
+        "Platform": {
+          "type": "Single select",
+          "options": [
+            "PC",
+            "PS4",
+            "PS5",
+            "Xbox",
+            "Switch",
+            "iOS",
+            "Android",
+            "All"
+          ]
+        },
+        "Grafana Link": {
+          "type": "URL"
+        },
+        "Auto Updated": {
+          "type": "Checkbox",
+          "description": "Automatically pulled from Grafana?"
+        },
+        "Last Sync": {
+          "type": "Date"
+        },
+        "Notes": {
+          "type": "Long text"
+        }
+      }
+    }
+  },
+  "automations": [
+    {
+      "name": "Release Instance Creation",
+      "trigger": "New Release Instance created",
+      "actions": [
+        "Create Slack channel (fn-release-XX-XX-ext)",
+        "Generate all tasks from templates based on milestone dates",
+        "Create JIRA dashboard",
+        "Send kickoff notifications",
+        "Create deploy tracker"
+      ]
+    },
+    {
+      "name": "Task Due Date Calculator",
+      "trigger": "Milestone dates updated",
+      "actions": [
+        "Recalculate all task due dates based on milestone + offset",
+        "Update dependent task dates",
+        "Send notifications for date changes"
+      ]
+    },
+    {
+      "name": "Task Status Automation",
+      "trigger": "Task marked as completed",
+      "actions": [
+        "Check if dependent tasks can now start",
+        "Update release health score",
+        "Send Slack notifications",
+        "Auto-assign next tasks in sequence"
+      ]
+    },
+    {
+      "name": "Overdue Task Alerts",
+      "trigger": "Daily at 9 AM",
+      "actions": [
+        "Find all overdue tasks",
+        "Send Slack alerts to assignees and managers",
+        "Update release risk assessment",
+        "Create escalation threads"
+      ]
+    },
+    {
+      "name": "Approval Workflow",
+      "trigger": "Task requires approval",
+      "actions": [
+        "Route to appropriate approver based on task type",
+        "Send Slack notification with approval request",
+        "Set approval deadline",
+        "Escalate if no response within SLA"
+      ]
+    },
+    {
+      "name": "Milestone Achievement",
+      "trigger": "All milestone tasks completed",
+      "actions": [
+        "Update release status",
+        "Send milestone completion notifications",
+        "Auto-start next phase tasks",
+        "Generate milestone report"
+      ]
+    },
+    {
+      "name": "Grafana Metrics Sync",
+      "trigger": "Every 30 minutes",
+      "actions": [
+        "Pull latest metrics from Grafana API",
+        "Update stability metrics table",
+        "Check thresholds and create alerts",
+        "Update release health score"
+      ]
+    },
+    {
+      "name": "Integration Request Automation",
+      "trigger": "New change request created",
+      "actions": [
+        "Route for required approvals",
+        "Create JIRA integration request",
+        "Send Slack notifications",
+        "Track approval status"
+      ]
+    }
+  ],
+  "integrations": [
+    {
+      "name": "JIRA Integration",
+      "purpose": "Sync tasks, create dashboards, track issues",
+      "endpoints": [
+        "Create JIRA tickets for tasks",
+        "Sync task status with JIRA issues",
+        "Pull JIRA filters for dashboards",
+        "Update release JIRA fields"
+      ]
+    },
+    {
+      "name": "Slack Integration",
+      "purpose": "Notifications, channel management, status updates",
+      "endpoints": [
+        "Create release channels",
+        "Send task notifications",
+        "Post status updates",
+        "Create approval threads"
+      ]
+    },
+    {
+      "name": "Perforce Integration",
+      "purpose": "Track CLs, verify versions, monitor commits",
+      "endpoints": [
+        "Verify version numbers in files",
+        "Track commit CLs",
+        "Monitor integration requests",
+        "Validate build prerequisites"
+      ]
+    },
+    {
+      "name": "Grafana Integration",
+      "purpose": "Automated metrics collection",
+      "endpoints": [
+        "Pull stability metrics",
+        "Monitor performance dashboards",
+        "Alert on threshold breaches",
+        "Historical trend analysis"
+      ]
+    },
+    {
+      "name": "Platform APIs",
+      "purpose": "Certification status tracking",
+      "endpoints": [
+        "PlayStation certification status",
+        "Xbox certification status",
+        "Nintendo lotcheck status",
+        "Mobile store submission status"
+      ]
+    }
+  ],
+  "implementation_phases": [
+    {
+      "phase": 1,
+      "name": "Core Structure",
+      "duration": "2-3 weeks",
+      "tasks": [
+        "Create core tables in Airtable",
+        "Import existing checklist templates",
+        "Set up basic task generation",
+        "Create simple status tracking"
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Basic Automation",
+      "duration": "2-3 weeks",
+      "tasks": [
+        "Implement date calculations",
+        "Set up Slack notifications",
+        "Create approval workflows",
+        "Add overdue task alerts"
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "External Integrations",
+      "duration": "3-4 weeks",
+      "tasks": [
+        "JIRA API integration",
+        "Perforce monitoring",
+        "Grafana metrics automation",
+        "Platform API connections"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Advanced Features",
+      "duration": "2-3 weeks",
+      "tasks": [
+        "AI-powered risk assessment",
+        "Predictive timeline adjustments",
+        "Advanced reporting dashboards",
+        "Mobile app interface"
+      ]
+    }
+  ]
+}

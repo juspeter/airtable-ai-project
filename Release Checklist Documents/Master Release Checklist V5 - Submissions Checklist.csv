@@ -1,0 +1,485 @@
+,Item,Status,Due by,Completed by,Temp-Notes,Steps To Complete,"Suggested Slack Post Text 
+(unless otherwise stated)","Suggested Slack Thread Text 
+(unless otherwise stated)"
+,Pre-Candidate Build - MUST DO	,,,,,,,
+,By Hard Lock:	,IN PROGRESS,,,,,,
+SUB,Ensure Sony publishing tools are up to date,TODO,Thu Jul 17,,Slack: LINK,"PS4: https://ps4.siedev.net/docs/master_submission
+PS5: https://p.siedev.net/docs/master_submission
+
+To find Sony Publishing Version: Look at the build logs from the ""PS4 Client Full Package"" step lists the version of the tools in the output
+
+Ping Luke Thatcher and/or Ben Woodhouse if you have issues",,
+SUB,Make sure PS4 SIEE (07669)  packages are being built,TODO,Thu Jul 17,,,//Fortnite/Release-34.10/FortniteGame/Build/FortniteBuild.xml,,
+,By Pencils Down:	,IN PROGRESS,,,,,,
+SUB,Get engineer sign off of patch Sizes,TODO,Fri Jul 18,,Slack: LINK,Tag fn-tech-patchreview in #fn-release-patchsizes. Try to send first prelim sizes soon after hard-lock,,
+,By Cert Submission:	,IN PROGRESS,,,,,,
+SUB,"FortniteContentBuilds: 
+ - This is Content On Demand (downloading additional stuff in the background which is only present on some platforms)
+ 
+Verify platforms below have been updated correctly:
+
+ - PC/Windows
+ - Android
+ - PS4
+ - PS5
+ - Switch
+ - XB1
+ - XSX
+ - iOS
+
+Old Wiki",TODO,Sat Jul 19,,"Check the prior 3 content versions, and confirm they are present in the Rollback labels (code only versions will not appear)
+
+
+If the admin portal looks weird, confirm the .json file is showing the correct CLs for CONSOLES
+
+Escalate any issues to the #fn-tech-ext channel
+
+If Switch doesn't look correct, escalate to Justin Marcus to see if that is intended or not (something about Fort inquiry??)","1. Navigate to the FortniteContentBuilds section of the Admin Portal
+2. Under the Promotion Labels section, Look for the Live label (should be first) and open the dropdown
+3. Open another window and go to the Release Log to see our live CLs
+4. Copy the Live CL for PC/Windows and search for it in the admin portal's Live Label to verify it is correctly reflected
+   a. Repeat this step for Android, PS4, PS5, Switch, XB1, XSX, iOS (Ignore XboxOne & XboxOneGDK)
+5. Repeat steps 2-4a. This time for the Rollback label. 
+   a. Type Rollback into the filter, then hit the Label Name column header twice to find it.
+6. The CL you are looking for is the CL immediately previous to the live CL. Look in Current & Previous Releases section of the Release Log
+
+7. As a secondary check (FOR CONSOLES ONLY - NOT PC), you can navigate to the below file on the network drive (easiest to use a VM to work computer)
+P:\Builds\Automation\Fortnite\Config\ConsoleLiveLabels.json
+8. Do a find and search of the live and immediately previous to live CLs to ensure they are present 
+   a. Can open the file in a text editor > Ctrl+F > Insert CL. It should return 5 hits (PS4, PS5, Switch, XB1, XSX)",,
+,Preparation,,,,,,,
+,Item,Status,Due by,Completed by,Temp-Notes,Steps To Complete,"Suggested Slack Post Text 
+(unless otherwise stated)","Suggested Slack Thread Text 
+(unless otherwise stated)"
+,By Hard Lock: ,IN PROGRESS,,,,,,
+SUB,Review the Cert issues filter to make sure nothing egregious still needs to be fixed,TODO,Fri Jul 18,,Double check to ensure cert impacting issues have been confirmed fixed on the current candidate,Dashboard - https://jira.it.epicgames.com/secure/Dashboard.jspa?selectPageId=25898,,
+,AFTER 8PM ET HARDLOCK,AFTER 8PM ET HARDLOCK,,,AFTER 8PM ET HARDLOCK,AFTER 8PM ET HARDLOCK,AFTER 8PM ET HARDLOCK,AFTER 8PM ET HARDLOCK
+,By Pencils Down: 	,IN PROGRESS,,,,,,
+,AFTER 8PM ET PENCILS DOWN,AFTER 8PM ET PENCILS DOWN,,,AFTER 8PM ET PENCILS DOWN,AFTER 8PM ET PENCILS DOWN,AFTER 8PM ET PENCILS DOWN,AFTER 8PM ET PENCILS DOWN
+SUB,Verify that the PS5/PS4 versioning is correct for the release. ,TODO,Sat Jul 19,,,"1. Open the P drive and locate a recent build in this release branch. 
+2. Verify that the PS4 and PS5 build versions are correctly incremented from the previous release. 
+*Previous release app versions can be found on the Release Log. ",,
+SUB,Make sure SwitchEngine version has been incremented.,TODO,Sat Jul 19,,,"1. Open the P4 navigate to the following file: Release-XX.XX > FortniteGame > Platforms > Switch > Config > SwitchEngine.ini 
+2. Verify that the Application Version, and ApplicationVersionString have been appropriately updated. 
+*Previous Release version can be found on the Release Log.  ",,
+SUB,Verify that LatestPatch folder contains last released patches,TODO,Sat Jul 19,,,"1. Navigate to the Latest Patch folder on the P drive: P:\Builds\Fortnite\MasterReleases\1.0
+2. Open the appropriate folders for PS4/PS5/XB1/XSX and verify that the previous release versions have been updated to the last patch that successfully compeleted certification. ",,
+,Pre-Candidate Build	,,,,,,,
+,By Cert Submission:	,IN PROGRESS,,,,,,
+SUB,Request Patches: Create New Release for Nintendo,TODO,Wed Jul 16,,,,,
+SUB,Request Patches: Fill out and submit new OMAS for Nintendo,TODO,Wed Jul 16,,,,,
+SUB,Request Patches: SIEA (07022)  (07022) - WIKI,TODO,Wed Jul 16,,,,,
+SUB,Request Patches: SIEE (07669)  (07669) - WIKI,TODO,Wed Jul 16,,,,,
+SUB,Request Patches: PS5 Shared,TODO,Wed Jul 16,,,,,
+SUB,Create Version on App Store Connect and check if any Publishing metadata updates are needed,TODO,Wed Jul 16,,,"1. Go to https://appstoreconnect.apple.com/apps
+2. Select Fortnite
+3. From the Distribution tab, in the left-hand column click the (+) button to add a new version if it does not already exist (Only two versions can be in at one time: the Live build and the Next build)
+4. Sanity check that the metadata has carried over correctly
+5. Confirm with publishing (Alex Conner/Emu Servais) if any screenshots or text need to be updated (The data present in App Store connect only appears in the App Installation Sheet, when confirming to install Fortnite. EGS metadata is found in Product Framework)
+
+* What's New in This Version -- metadata is not required as per 2.3.12 (listed as n/a for Notarization Review Guidelines Only)",:apple-bounce: CHECKLIST_VERSION App Store Connect Metadata,"@Alex Conner @Ross Marabella @Zach Moore
+Are we planning on changing any of the screenshots or text on the iOS App Store Connect portal for CHECKLIST_VERSION?
+I am assuming no but would rather ask for sanity sake.
+:ty: in advance!"
+SUB,Verify the file system captures for Nintendo have been gathered by QA,TODO,Sat Jul 19,,Slack: LINK,"Details in this document https://docs.google.com/document/d/1krb18jjtEBn10duEBgaiklnLnN55RE5raKLL4acSX3c/edit#heading=h.xd3o88dyuuik
+
+Example Post",,
+,Release Candidate Build (Locked in)	,,,,,,,
+,,IN PROGRESS,,,,,,
+SUB,Create a cert thread in the Release channel.,TODO,Sun Jul 20,,,Pin it to the channel (example),,
+SUB,Update Release Log and Release Request,TODO,Sun Jul 20,,,"1. Update REAL-XXXX  ticket's description with build CLs, backend CLs & patch sizes
+2. Check Release Log to ensure that info is reflected in the upcoming releases section",,
+SUB,Make local copies to your station for all platforms going to certification,TODO,Sun Jul 20,,,,,
+SUB,"Add build info to the relevant cert backends.
+(CCA/ CCB / MobileCert)",TODO,Sun Jul 20,,,Steps to Complete can be found in this WIKI,,
+SUB,"Set up the above cert environments to have the correct:
+ - Server (CCA / CCB / DPQ / MobileCert)
+ - MCP (CCA / CCB / DPQ / MobileCert)",TODO,Sun Jul 20,,,,,
+SUB,Ensure cert backends are online (CCA / CCB / DPQ / MobileCert),TODO,Sun Jul 20,,,"1. Go to the links in Col A ""Deployments"" Tab
+2. Change the status drop down in the middle to ""Host Limits""
+3. Input desired hosts into the max header (in this case 1)
+4. Hit Apply > Review > Save > Refresh Page
+5. Ensure the circles are going green",,
+SUB,CertSub Candidate: Patch Sizes,TODO,Sun Jul 20,,,Steps to Complete can be found in this WIKI,,
+SUB,"Send Akamai early estimate of patch sizes
+ - Email",TODO,Sun Jul 20,,,,,
+SUB,"Notify Nvidia of the upcoming patch date and time
+ - Email",TODO,Sun Jul 20,,,"Email: GFN-DevOps-External@nvidia.com, ssolovyev@nvidia.com
+fliljegren@nvidia.com
+Format:
+MM/DD/YYYY, TIME_UTC_24H
+Example - 08/27/2018, 08:00 UTC",,
+SUB,"Notify AWS of the upcoming patch date, time, and sizes
+ - Email",TODO,Sun Jul 20,,,epicgames-events@amazon.com,,
+SUB,"Notify Fastly of the upcoming patch date, time, and patch sizes
+ - Slack Post ",TODO,Sun Jul 20,,,#fastly-epicgames,,
+SUB,"Notify Akamai of the upcoming patch date, time, and patch sizes
+ - Slack Post ",TODO,Sun Jul 20,,,#vndr-akamai-ext,,
+SUB,"Notify Cloudflare channel of the upcoming patch date, time, and patch sizes
+ - Slack Post ",TODO,Sun Jul 20,,,"#vndr-aws-egs-cloudfront-ext
+#vndr-cloudflare-ext",,
+SUB,"Notify ISP email group alias of the upcoming patch date, time and patch sizes
+ - Email",TODO,Sun Jul 20,,,ext-fn-release-notify@epicgames.com,,
+SUB,Request Patches: Email Xbox Account Manager,TODO,Sun Jul 20,,,"""TO: Derek Russel <deruss@microsoft.com>, Epic Games WAM <epicwam@microsoft.com>
+CC: Release-team""",,
+SUB,Update DevNet Thread with Incoming Patch Information,TODO,Sun Jul 20,,,PS4 and PS5,,
+SUB,Upload Nintendo ROM and complete pre-submit waiver requests,TODO,Sun Jul 20,,,,,
+SUB,Submit Switch the Switch build to lotcheck,TODO,Sun Jul 20,,,,,
+SUB,Submit IOS for Notarization,TODO,Sun Jul 20,,,"- Make sure to include the ""test_accounts.xlsx"" file
+- Make sure that the ""FN External Testers"" group is added to the build so it can be played on Live outside of the EU",,
+SUB,Upload SIEA (07022)  build,TODO,Sun Jul 20,,,,,
+SUB,Upload SIEE (07669)  build,TODO,Sun Jul 20,,,,,
+SUB,Upload PS5 shared binary,TODO,Sun Jul 20,,,,,
+SUB,Upload the Luna Client and send it to certification,TODO,Sun Jul 20,,,,,
+SUB,"Upload XB builds, verify the validator logs, and submit to cert.",TODO,Sun Jul 20,,,,,
+SUB,Complete and save final MDT (PS5),TODO,Sun Jul 20,,,,,
+SUB,Update MDT: SIEA,TODO,Sun Jul 20,,,,,
+SUB,Update MDT: SIEE,TODO,Sun Jul 20,,,,,
+SUB,Rapid patch Submission: SIEA (07022) ,TODO,Sun Jul 20,,,,,
+SUB,Rapid patch Submission: SIEE (07669) ,TODO,Sun Jul 20,,,,,
+SUB,Rapid patch Submission: PS5,TODO,Sun Jul 20,,,,,
+,Signoff and Submission,,,,,,,
+,,IN PROGRESS,,,,,,
+SUB,Update Akamai with final patch sizes,N/A,Sun Jul 20,,Only needed if we did not send RC build sizing,,,
+SUB,Final Scheduling: Xbox One / XSX,TODO,Sun Jul 20,,,,,
+SUB,Final Scheduling PS5,TODO,Sun Jul 20,,,,,
+SUB,Final Scheduling PS4,TODO,Sun Jul 20,,,,,
+SUB,Upload PS4 Symbols to devnet,TODO,Sun Jul 20,,,,,
+SUB,Upload PS5 Symbols to devnet,TODO,Sun Jul 20,,,,,
+SUB,Upload XB1/XSX crash symbols through Xbox Send,TODO,Sun Jul 20,,,"1. Log into your Xbox Send account
+2. Upload the XB1/XSX crash symbols from our RC build. 
+3. Send it to Sean White <seanwh@microsoft.com> and Andy Hess <andrewhess@microsoft.com>
+4. Find the email titled ""RE: [EXTERNAL] Re: Symbol missing on MS Partner for Xbox and XSX for Fortnite"" and ping the thread letting them know that they have been sent over. ",,
+SUB,Final Scheduling: Switch,TODO,Sun Jul 20,,,,,
+,Submit Build to One Store,TODO,Sun Jul 20,,,"1. Upload build to One Store.
+2. Select Request for Review.
+3. Copy paste the patchnotes for relevant release from row 20 of this sheet:
+https://docs.google.com/spreadsheets/d/1-eYN_be-_U1j34T4YW1R3NowDBHFy8pGL3YUX4Hf-Ik/edit?gid=474166268#gid=474166268&range=AP20
+4. Submit.",,
+SUB,Upload the Digital Turbine Candidate ,TODO,Sun Jul 20,,,,,
+SUB,Submit Android build to Oppo,TODO,Sun Jul 20,,,,,
+SUB,Confirm with Luna that we're through certification. ,TODO,Sun Jul 20,,,"1. Return to the Fortnite Overview in the Luna portal, check if the ""alpha state"" is set to ""certified"".
+*If the title is still certifying, ping Amazon in the submission thread to ask for an update. ",,
+SUB,Submit PC build to GFN,N/A,Sun Jul 20,,GFN will scrape live. ,,,
+,Pre-Release	,,,,,,,
+,,IN PROGRESS,,,,,,
+SUB,Remove Cert Redirects,TODO,Sun Jul 20,,,"DO NOT REMOVE PS4 IF WE'RE STILL IN RMT TESTING WITH SONY
+- CCA, CCB, DPQ, FortniteMobileCert",,
+SUB,Spindown Cert Servers,TODO,Sun Jul 20,,,,,
+SUB,Live: Update PS4/PS5/XB1/XSX/IOS fake Build Info,TODO,Sun Jul 20,,,Needs to be done otherwise you can't check Selective (MSFT),,
+SUB,Live: Update Switch Build Info,TODO,Sun Jul 20,,,NEVER REMOVE BUILDS FROM LIVE,,
+SUB,Live: Update Android Build Info,TODO,Sun Jul 20,,,NEVER REMOVE BUILDS FROM LIVE,,
+SUB,Prep AltStore Stage Source,TODO,Sun Jul 20,,,Can be done once cert complete - need ADP ID,,
+SUB,"Schedule Lightswitch Down in Admin Portal
+   - Scheduling MUST happen at least 1 hour before the downtime start",TODO,Sun Jul 20,,"USE EXTREME CAUTION HERE:
+
+There is potential to bring the game down if you are not careful","1. Go to Lightswitch 2.0 Page in the Admin Portal
+2. Go to the ""Add Scheduled Event"" section at the bottom
+3. Set Scheduled Time to the ""Downtime"" in the REAL-XXXX Ticket's Description
+   a. cross-reference LS down time with the CHECKLIST_VERSION Release Strategy Email
+   b. NOTE THIS TIME SHOULD BE SET TO EST
+4. Set Status to:    DOWN
+5. Set Message to:
+Fortnite is down for maintenance
+6. Set Add Actions to:
+Fortnite_Free_Platforms
+7. Select Create Event
+8. Double check the info in the new ""Scheduled Events"" section in the middle of the page
+   - Processed should say No",,
+SUB,"Internal Release Email
+   Template",TODO,Sun Jul 20,,ALL PLATFORMS NEED TO BE THROUGH CERT BEFORE SENDING EMAIL,"1. Look up a previous email to use as a template
+   Search for ""online-infra-global@epicgames.com"" to find them
+2. Copy the formatting and replace content with CHECKLIST_VERSION's information
+   a. Look at the REAL-XXXX Ticket for all info
+3. Send to the recipients in Column H","TO: 
+online-infra-global@epicgames.com, global-live-deployments@epicgames.com, FN-Live@epicgames.com","Fortnite - XX.YY Release - MM/DD @ 4:00am ET
+
+Release Ticket: REAL-XXXX
+
+Player Impact:
+VERIFY_AGAINST_SLACK_THREAD
+Fortnite matchmaking will be disabled at 03:30am ET, downtime will then begin at 04:00am and is estimated to conclude at 05:30am. When downtime begins players will be kicked from active sessions. Players may experience throttled logins as we come back online.
+
+Build Info:
+App: Fortnite
+INSERT_FROM_REAL_TICKET
+Clients
+Windows: ++Fortnite+Release-XX.YY-CL-XXXXX
+PS4: ^^
+PS5: ^^
+Xbox: ^^
+XSX: ^^
+Switch: ^^
+Android (EG): ^^
+UEFN: ^^
+
+Backend
+Server:  ++Fortnite+Release-XX.YY-CL-XXXXX
+MCP: XX.YY.nnn-rXXXXX
+UEFN: ++Fortnite+Release-XX.YY-CL-XXXXX
+
+Patch Sizes
+Windows: X.XX GB
+PS4: X.XX GB
+PS5: X.XX GB
+XSX: X.XX GB
+Xbox: X.XX GB
+Switch: X.XX GB
+Android: Low End: X.XX GB / High End: X.XX GB
+
+Testing Requirements:
+Whiteglove 
+
+Communication:
+#fn-release-deploy-ext"
+SUB,"External Release Email
+    Template",TODO,Sun Jul 20,,ALL PLATFORMS NEED TO BE THROUGH CERT BEFORE SENDING EMAIL,"1. Look up a previous email to use as a template
+   Search for ""partners-liveops-alerts@epicgames.com"" to find them
+2. Copy the formatting and replace content with CHECKLIST_VERSION's information
+3. Send to the recipients in Column H","TO: 
+partners-liveops-alerts@epicgames.com
+
+BCC:
+public-alerts@noa.nintendo.com, sie-noc@sony.com, xoc@microsoft.com, epic-issues@vivox.com,  noc@subspace.com, release-team@epicgames.com","Fortnite - XX.YY Release - MM/DD @ 4:00am ET
+
+Player Impact:
+TAKE_FROM_MESSAGE_ABOVE
+Fortnite matchmaking will be disabled at 03:30am ET, downtime will then begin at 04:00am and is estimated to conclude at 05:30am. When downtime begins players will be kicked from active sessions. Players may experience throttled logins as we come back online."
+SUB,"Send ""Release is a GO"" email",TODO,Sun Jul 20,,ALL PLATFORMS NEED TO BE THROUGH CERT BEFORE SENDING EMAIL,"1. Look up previous deploy email using the string ""is a GO for""
+2. Copy the formatting and replace content with CHECKLIST_VERSION's information
+   a. Ship List can be found pinned in the release-CHECKLIST-VERSION-ext slack channel
+   b. Helpful Links can be found in the google calendar
+   c. Down Time, Morning Crew / Patch Sizes can be found in the REAL-XXXX Ticket's Description","TO:
+fn-release-updates@epicgames.com",Replace with Pre-Pop
+,"   ___     ___  __      __          ___             _ __     _              _  _  
+  | _ \   / _ \ \ \    / /  o O O  |   \    ___    | '_ \   | |     ___    | || | 
+  |   /  | (_) | \ \/\/ /  o       | |) |  / -_)   | .__/   | |    / _ \    \_, | 
+  |_|_\   \___/   \_/\_/  TS__[O]  |___/   \___|   |_|__   _|_|_   \___/   _|__/  
+_|""""""""""|_|""""""""""|_|""""""""""| {======|_|""""""""""|_|""""""""""|_|""""""""""|_|""""""""""|_|""""""""""|_| """"""""| 
+""`-0-0-'""`-0-0-'""`-0-0-'./o--000'""`-0-0-'""`-0-0-'""`-0-0-'""`-0-0-'""`-0-0-'""`-0-0-' ",,,,,,,
+,Lead-up to Downtime - Deployment Owner	,,,,,,,
+,Item,Status,Due buy,Done by,Temp-Notes, Perma-Notes,,
+,During Downtime - Deployment Owner	,,,,,,,
+,Item,Status,Due Buy,Done by,Temp-Notes, Perma-Notes,,
+,Post-Release - Deployment Owner	,,,,,,,
+,Item,IN PROGRESS,Due Buy,Done by,Temp-Notes, Perma-Notes,,
+SUB,Update the master cert timing tracker sheet,TODO,Mon Jul 21,,,Tracker Google Sheet -- tracking Switch / PS4 (SIEE (07669) /SIEA (07022) ) / PS5 / MSFT / Apple,,
+SUB,Update Patch Size Tracking,TODO,Mon Jul 21,,,Remember to add Install time thresholds as well,,
+SUB,Increment Switch version,TODO,Mon Jul 21,,,,,
+SUB,Increment PlayStation versions,TODO,Mon Jul 21,,,,,
+SUB,Increment iOS version,TODO,Mon Jul 21,,,,,
+SUB,Update Sony LatestPatch folder to contain these patches,TODO,Mon Jul 21,,,MasterReleases->1.0->Create folder for appropriate app version,,
+SUB,Update Nintendo LatestPatch folder to contain these patches,TODO,Mon Jul 21,,,,,
+SUB,Update Xbox LatestPatchfolder to contain these patches,TODO,Mon Jul 21,,,,,
+,Not currently relevant (re-visit as needed)	,,,,,,,
+,Item,Status,Due by,Done by,Temp-Notes, Perma-Notes,,
+,"Confirm MCP deploy percentage with OGS (tag Pete Axt & Joe Pintozzi) and Live Ops.
+   WIKI",,Sun Jul 20,,Slack: LINK,1. Make a post in #epic-live-operations-ext or #on-dbs-game-services-ext using the suggested text in Column H,"@Joe Pintozzi @Pete Axt 
+Just confirming we are targeting 50% DeployHostPercentage during downtime as usual for the CHECKLIST_VERSION MCP deploy tomorrow?",
+,Create Bug Bids Page,,Thu Jul 17,,Bug Bids Page: LINK,"1. Go to the previous version's Bug Bids Page (here)
+2. Click ""..."" > Copy > Copy
+3. Change title to Bug Bids for CHECKLIST_VERSION > Publish
+4. Note the current values in the Issues Left column
+5. Edit the page > Update the hard coded HL-1w and HL dates as per the FN Schedule
+6. Clear the hardcoded values in HL-1W and HL columns (highlight and delete)
+
+This section is borked until the <> is re-added back. Need to do manually until then :(((((
+7. Select the <> icon to open in source editor
+8. Find the version you copied from, replace all with the version you want > Apply > Update
+9. Ensure the values have changed",,
+,Schedule Send Bug Bids Email 10 days prior to Hard Lock date at 10:30am,,Thu Jul 17,,Send scheduled for DATE,"1. Go to GMail and compose a new email
+2. Send email using the suggested text in Column H
+3. Link the bug bids page to the blue text
+4. Change Day MM/DD to the date of review (monday the week of HL)
+5. Once done, hit the drop down arrow on the blue Send button > Schedule Send
+6. Pick a Date & Time > 10 days prior to Hard Lock date at 10:30am (See Cell F2)
+7. Schedule Send
+8. Go to your gmail > Scheduled (below sent) and review the preview to ensure it is all correct
+9. Paste the scheduled send info in column F for reference ","The CHECKLIST_VERSION Bug Bids wiki has been created and is ready for you to enter your bids!
+We will start reviewing at morning sync next week on DAY MM/DD.
+
+Reminder, there's a link on the top of this page you can use to look at historic fix rate data for your components, which you can use to reason about what your teams can realistically tackle leading up to CHECKLIST_VERSION. Past Bug Bid pages are also still available for review under the Release Accountability parent page.
+
+CHECKLIST_VERSION Dashboard: [Link]
+
+Doing this thinking now, ahead of the hectic bugfix stage, will help identify rational targets you can use to guide triage activities & tradeoff decisions. 
+
+Thanks,
+Release Team","TO:
+Release-Team@epicgames.com
+
+CC:
+FN-Prod-All <FN-Prod-All@epicgames.com>, FNE Release <fne-release@epicgames.com>
+
+Subject:
+Bug Bids for CHECKLIST_VERSION"
+,"(Joe) I would just completely kill this line in favor of the Build Protection line just above.
+
+Run Keep Release Candidate job for all final client candidate CLs.",,7/19/2025,,"PLATFORM_1: HORDE_JOB_LINK
+
+PLATFORM_2: HORDE_JOB_LINK
+
+PLATFORM_3: HORDE_JOB_LINK","1. Go to the REAL-XXXX ticket for this release to see the final candidate CLs
+2. Go to the Promotions tab of Main Horde
+3. Select the blue New Job button in top right
+4. Change template dropdown to Keep Release Candidate
+5. Put the first CL in the Change field and set the associated Promote Platforms field. Then Start Job.
+   a. Re-Run for all Client CLs with their associated Promote Platforms field. ",,
+,Verify the Android APK allowlist is in the game config file,,7/20/2025,,"Release Team no longer needs to send hotfixes to update CRC values when we ship new Android client builds. The 13.40 values need to stay, but the Android APK Whitelist hotfixes no longer function in 23.50+ . This is now being done on the AntiCheat side via Dragonfly.",Verify it is in the game config file,,
+,Review Android APK allowlist syntax is included and correct in Release QA swarm link and in PredeployA files ,,7/21/2025,,"Release Team no longer needs to send hotfixes to update CRC values when we ship new Android client builds. The 13.40 values need to stay, but the Android APK Whitelist hotfixes no longer function in 23.50+ . This is now being done on the AntiCheat side via Dragonfly.",,,
+,Create a Jira for StW Calendar/Store to be update/reviewed (CN/RoW),,7/17/2025,,,"Assign to Dav Harnish and CC Henry Meredith in comments
+https://jira.it.epicgames.net/browse/FORT-247162",,
+,Check Android APK size and make sure it is under 150 MB,,7/19/2025,,,Look at APK in the build folder,,
+,Create a tab in FN Playlist Planning sheet and let stakeholders know in #fn-release-playlistplanning-ext that it now exists,,7/17/2025,,,"https://confluence.it.epicgames.com/display/FORT/Playlist+Planning
+
+Note: If its a .10 release, spin up a thread. If its not, then mark this task as N/A.",,
+,Schedule Meeting: Release Notes Signoff,,7/18/2025,,No Release Notes!,Thurs. of CertSub week,,
+,Release Notes: Initial Setup and Email Sent,,7/18/2025,,No Release Notes!,,,
+,Schedule Calendar Reminders: Release Notes Section Owners,,7/18/2025,,No Release Notes!,1 each day for 2 document days of release notes,,
+,Order breakfast for morning of publish day,,7/16/2025,,Please bring this back!!!,,,
+,,,,,,,,
+,,,,,,,,
+,Send initial IOS Submission email,,7/16/2025,,,,,
+,Update Google Play Roadmap email (if applicable),,7/16/2025,,,"to:
+Dan Song <mtd@google.com(opens in new tab)>
+Lawrence Koh <lawrencekoh@google.com(opens in new tab)>
+CC
+release-team
+Jocelyn
+Hans",,
+,Send Release Notes 1st Draft to FN-Release-Updates,,7/16/2025,,No Release Notes!,,,
+,Forward CN patch notes to EGC,,7/19/2025,,No Release Notes!,Forward version patch notes for China to Martin Yu. Martin will review and deliver to Tencent.,,
+,Add IOS Whitelist Hotfix to MobileCert,,7/20/2025,,,,,
+,Check iOS Compressed File Size,,Fri Jul 18,,"Compressed File Size: MB
+
+
+Previously in 13.40 Release flagged if greater than 200 MB. Compressed sizes have increased in allowance from Apple.
+
+We should still note what the size is and report to tech-mobile
+
+Jira for investigations is FORT-772296
+
+This process may be something we can remove, but need to keep an eye out for a few releases. [thread]","1. Go to https://appstoreconnect.apple.com/apps
+2. Select Fortnite
+3. Select TestFlight
+4. Select the RC candidate Version and Build
+5. View the Build Metadata for Compressed File Size
+6. Record the size and pass along to Tech-Mobile",,
+,Audit MobileCert environment config for potential cert blockers,,7/19/2025,,,,,
+,Configure MobileCert Build Info,,7/19/2025,,,,,
+,MobileCert: MCP Update,,7/19/2025,,,,,
+,MobileCert: Server Promote,,7/19/2025,,,,,
+,Cert Submission: iOS,,7/19/2025,,,,,
+,Send email notifying Apple contacts that build is uploaded,,7/19/2025,,,,,
+,Send email notifying Google contacts that build is uploaded,,7/19/2025,,,,,
+,Remove MobileCert Redirect,,7/20/2025,,,,,
+,Live: Update iOS Build Info,,7/20/2025,,,,,
+,Remove Android Build Info from MobileCert,,7/20/2025,,,,,
+,Live: Update LiveCN Build Info,,7/20/2025,,,Deploy will be coordinated with TC in #ext-fncn-live in Slack. TC will flip WeGame switches. THIS STEP IS ONLY NEEDED IF STAGING THE CN BUILD FAILED.,,
+,Update Apple Cert Timing Tracker,,7/21/2025,,,,,
+,Update EULA if requested by Legal,,7/18/2025,,,,,
+,VVV To be Re-Added Once iOS comes back VVV,,,,,,,
+,Make sure PredeployA Hotfix Files are set back to appropriate Android Whitelist and IOS Banning syntax for LOPS to copy at time of release,,7/20/2025,,Only Android?,"Android: Whitelist syntax needs to be added
+IOS: Remove the following:
+[/Script/FortniteGame.FortGameModeZone]
+BanCodeAction_20=(AnyReason=2, UnsignedIPA=0)
+BanCodeAction_28=(AnyReason=2, NoIOSCryptInfo=0)",,
+,Make sure PredeployA Hotfix Files are set back to appropriate Android Whitelist and IOS Banning syntax for QA to not be blocked,,7/21/2025,,,"Android: Whitelist synatx needs to be removed
+IOS: Add the following:
+[/Script/FortniteGame.FortGameModeZone]
+BanCodeAction_20=(AnyReason=2, UnsignedIPA=0)
+BanCodeAction_28=(AnyReason=2, NoIOSCryptInfo=0",,
+,Determine if release breaks Replays and/or if we should whitelist any old CLs,,7/18/2025,,https://wiki.it.epicgames.net/pages/viewpage.action?spaceKey=FORT&title=Replay+Whitelisting,"Should be considered if we are breaking replays of a major Live event from the previous release
+Ask Shak or Matt Grandstaff",,
+,Test verify PS4 remaster jobs have no errors or warnings,,7/18/2025,,,"Nightly Job ""Publish PS4 Remaster Submission Packages (SIEA (07022)  Only)""",,
+,Confirm all Non-Unity warnings and errors are fixed or benign,,7/18/2025,,,,,
+,PS4: Update R:\Analytics\sony_version.csv,,7/21/2025,,I refuse,Instruction Doc,,
+,,,,,,,,
+,Make sure PredeployA Hotfix Files are set back to appropriate Android Whitelist and IOS Banning syntax for QA to not be blocked,,7/21/2025,,,"Android: Whitelist synatx needs to be removed
+IOS: Add the following:
+[/Script/FortniteGame.FortGameModeZone]
+BanCodeAction_20=(AnyReason=2, UnsignedIPA=0)
+BanCodeAction_28=(AnyReason=2, NoIOSCryptInfo=0",,
+,"[24 hrs before] 
+
+Inform Tencent and Community",,#REF!,,,"24 hrs before - Inform in #ext-fncn-live @Sula Yu and CN QA deply captain
+Check EGC QA Checklist > Captain tab  for additional @
+https://docs.google.com/spreadsheets/d/1nUx7qP1aLLU6D1VVv0Q4mx18aMMG_tz5vmQC0Z9wxgc/edit?usp=sharing ",,
+,"[24 hrs before] 
+
+Release JIRA",,#REF!,,,Link Release management Jira ticket here,,
+,"[2 hours befire] 
+
+Hotfixes Checked In and Previewed",,#REF!,,Check fn-release-team around 4PM ET,"RQA will provide a Swarm shelf to approve and merge around 4PM ET
+https://docs.google.com/spreadsheets/d/1w5PQcnciR-lbbU6H6m0aaqgiFWNRbttSr7uEoCmKUzk/edit#gid=2063781583 ",,
+,"[2 hours before] 
+
+Schedule Downtime (Fortnite)",,#REF!,,Schedule sometime before 4:40pm,https://adminportal-website-management.ol.epicgames.net/lightswitch2/schedule/fortnitelivecn?server=Lightswitch&moduleName=lightswitch,,
+,"[1 hrs before] 
+
+Verify Client, Server, and MCP for release",,#REF!,,,Pinged in Release Private if unsure of any changes,,
+,"[1 hrs before] 
+
+Internal Release Email",,#REF!,,,"fncn-live@epicgames.com,
+fn-live, 
+online-infra, 
+global-live-deployments",,
+,"[35 min before] 
+
+Turn off FN CN Alerts",,#REF!,,Poke liveOPS at MMS disable,"Request liveOPS pause FN Grafana integration in OpsGenie
+https://epicgames.app.opsgenie.com/teams/dashboard/76f730d9-7346-4f83-b599-ab3589ba2fce/integrations",,
+,"[35 min before] 
+
+Alternatively, Set False to True for Playlist Restrictions Configuration
+section at https://adminportal.ol.epicgames.net/fortnite/profileProxy?server=Fortnite%20China&moduleName=fortnite
+Click MMS at top and scroll down to Playlist Restrictions Configuration
+Set disableAllMatchmaking to true",,#REF!,,,"35mins before LS down
+Edit directly under Admin Portal
+https://adminportal-website-management.ol.epicgames.net/fortnite/systemFiles
+Make sure you are in ""Fortnite China""
+Notify fn-release-deploy (FN-Deploy Public) and Mission Control slack channels ",,"For Old Hotfix Method: 
+
+DefaultGame.ini 
+[/Script/FortniteGame.FortGameInstance]
+bBattleRoyaleMatchmakingEnabled=false"
+,,,,,,,,
+,Item,Status,Due by,Done by,Temp-Notes, Perma-Notes,,
+,Confirm Lightswitch down status,,#REF!,,,Check status has switched to DOWN - https://adminportal-website-management.ol.epicgames.net/lightswitch2/schedule/fortnitelivecn?server=Lightswitch&moduleName=lightswitch,,
+,Lightswitch down notifications,,#REF!,,,Post message in fn-release-deploy and Mission Control slack channels,,
+,We Games access disabled,,#REF!,,,"Notify ext-fncn-live to disable access for we games. 
+More often than not this is Sula, but confirm it isn't a different Tencent employee",,
+,"Deploy ""Go Live"" INI Hotfix config (make sure this is done before server deploy to ensure hotfix config is pulled correctly)",,#REF!,,,"Can move on to MCP and Client deploys until Hotfix is done.
+Notify fn-release-deploy and Mission Control slack channels
+Use FN-Deploy internal",,
+,Deploy MCP ,,#REF!,,,"Deploy %: 50%
+Notify fn-release-deploy and Mission Control slack channels
+Use FN-Deploy internal",,
+,Deploy MMS,,#REF!,,,"Done by MMS team after matcmaking is disabled - confirm with them during release sync if a deployment is being done. 
+Loop them in when light switch down",,
+,PC Client Deploy - Use Promotion Job (Client),,#REF!,,,"Whole build string, LiveCN, only Windows.
+Allow Live Promotions and BPT checked
+Notify fn-release-deploy and Mission Control slack channels
+Use FN-Deploy Public",,
+,"Server Deploy
+
+",,#REF!,,"Make sure Hotfix is underway before Deploying Server. Otherwise servers won't get new hotfixes for possibly 4 hours. 
+","Start immediately after hotfix deploy, due to server prep time, hotfixes should be live just prior to sessions starting
+Fleet: LiveCN
+Cohort: Main
+Use fast deploy option for downtime releases.
+Notify fn-release-deploy and Mission Control slack channels
+Use FN-Deploy internal",,
+,,,,,,,,
+,Item,Status,Due by,Done by,Temp-Notes, Perma-Notes,,
+,Nvidia: reply to already existing corresponding release thread in #ue-partner-nvidia-ext with courtesy status updates,,7/21/2025,,,"Usually Douglas Valkenaar, Alexander Gustev or Andrew Saritsky - #external-nvidia channel",,
+,StW Whiteglove,,#REF!,,,Poke ext-fccn-live with @s to start whiteglove,,
+,BR Whiteglove,,#REF!,,,Whiteglove is completed by both Epic CN and Tencent teams separately - need confirmation from both teams of a successful check.,,
+,If help is needed flushing buckets,,#REF!,,"Click ""Direct control panel link"" in next link",https://adminportal-website-management.ol.epicgames.net/fortnite/profileProxy?server=Fortnite%20China&moduleName=fortnite,,
+,Re-enable Light Switch Up,,#REF!,,,"Ready once the whiteglove has been confirmed and without any issues
+Update status message to Fortnite is up!
+Notify Sula - Access has been re-enabled. @Sula Yu please re-enable from wegames side as well
+Notify in Mission Control and FN-Release-Deploy - No whiteglove callout and lightswitch up",,
+,Re-enable CN alerts,,#REF!,,,"Unpause FN Grafana integration in OpsGenie
+https://epicgames.app.opsgenie.com/teams/dashboard/76f730d9-7346-4f83-b599-ab3589ba2fce/integrations",,
+,Post in #buildfarm-support to remove the previous release version,,#REF!,,,Reach out to Build Farm Support via #buildfarm-support channel in slack and ask them to remove the previous branch from horde after CN deploy is complete,,
+,Archive previous release Slack channel,,#REF!,,,,,
