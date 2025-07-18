@@ -1,23 +1,17 @@
 {
-  "name": "airtable-ai-project",
+  "name": "airtable-automation-suite",
   "version": "1.0.0",
-  "description": "Airtable AI conversion and analysis project",
+  "description": "AI-powered Airtable automation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "scan": "node scripts/base-scanner.js",
-    "analyze": "node scripts/analyze.js"
+    "test": "echo \"Testing environment...\" && node -e \"console.log('✅ Node.js:', process.version)\"",
+    "migrate": "node migration/run-migration.js",
+    "analyze": "node analysis/analyze-sheets.js"
   },
-  "keywords": ["airtable", "ai", "automation", "data-analysis"],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "airtable": "^0.12.2",
-    "axios": "^1.6.5",
-    "dotenv": "^16.3.1"
-  },
-  "devDependencies": {
-    "eslint": "^8.56.0",
-    "prettier": "^3.2.4"
+    "playwright": "^1.40.1",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.5"
   }
 }

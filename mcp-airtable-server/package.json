@@ -1,0 +1,24 @@
+{
+  "name": "mcp-airtable-server",
+  "version": "1.0.0",
+  "description": "MCP server for enhanced Airtable control with API and browser automation",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.16.0",
+    "airtable": "^0.12.2",
+    "dotenv": "^16.3.1",
+    "puppeteer": "^21.6.0"
+  },
+  "keywords": [
+    "mcp",
+    "airtable",
+    "automation"
+  ],
+  "author": "",
+  "license": "ISC"
+}

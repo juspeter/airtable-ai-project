@@ -1,0 +1,1824 @@
+{
+  "name": "Grafana to Airtable",
+  "description": "",
+  "version": 61,
+  "private": true,
+  "concurrency": 1,
+  "code": {
+    "number": 0,
+    "provider": "workato_webhooks",
+    "name": "new_event",
+    "as": "285006a5",
+    "keyword": "trigger",
+    "input": {
+      "request": {
+        "webhook_type": "json",
+        "query_params": "[]",
+        "payload_schema": "[{\"control_type\":\"text\",\"label\":\"Build version\",\"type\":\"string\",\"name\":\"buildVersion\"},{\"control_type\":\"text\",\"label\":\"Period name\",\"type\":\"string\",\"name\":\"periodName\"},{\"control_type\":\"text\",\"label\":\"Stream\",\"type\":\"string\",\"name\":\"stream\"},{\"control_type\":\"text\",\"label\":\"Start date\",\"render_input\":\"date_time_conversion\",\"parse_output\":\"date_time_conversion\",\"type\":\"date_time\",\"name\":\"startDate\"},{\"control_type\":\"text\",\"label\":\"End date\",\"render_input\":\"date_time_conversion\",\"parse_output\":\"date_time_conversion\",\"type\":\"date_time\",\"name\":\"endDate\"}]"
+      },
+      "webhook_suffix": "grafana-to-airtable"
+    },
+    "extended_output_schema": [
+      {
+        "label": "Headers",
+        "name": "headers",
+        "properties": [
+
+        ],
+        "type": "object"
+      },
+      {
+        "label": "Payload",
+        "name": "payload",
+        "properties": [
+          {
+            "control_type": "text",
+            "label": "Build version",
+            "type": "string",
+            "name": "buildVersion"
+          },
+          {
+            "control_type": "text",
+            "label": "Period name",
+            "type": "string",
+            "name": "periodName"
+          },
+          {
+            "control_type": "text",
+            "label": "Stream",
+            "type": "string",
+            "name": "stream"
+          },
+          {
+            "control_type": "text",
+            "label": "Start date",
+            "render_input": "date_time_conversion",
+            "parse_output": "date_time_conversion",
+            "type": "date_time",
+            "name": "startDate"
+          },
+          {
+            "control_type": "text",
+            "label": "End date",
+            "render_input": "date_time_conversion",
+            "parse_output": "date_time_conversion",
+            "type": "date_time",
+            "name": "endDate"
+          }
+        ],
+        "type": "object"
+      }
+    ],
+    "extended_input_schema": [
+      {
+        "label": "Payload configuration",
+        "name": "request",
+        "override": true,
+        "properties": [
+          {
+            "control_type": "select",
+            "label": "Webhook type",
+            "pick_list": [
+              [
+                "GET request",
+                "get"
+              ],
+              [
+                "PUT/POST with JSON payload",
+                "json"
+              ],
+              [
+                "PUT/POST with XML payload",
+                "xml"
+              ],
+              [
+                "PUT/POST with FORM encoded payload",
+                "form"
+              ],
+              [
+                "PUT/POST with raw binary data",
+                "rawdata"
+              ],
+              [
+                "PUT/POST with unicode text data",
+                "rawdatatxt"
+              ]
+            ],
+            "hint": "Select the HTTP method and payload data type used by webhook. <a href=\"https://docs.workato.com/developing-connectors/http.html#set-up-your-non-oauth-2-0-connection\" target=\"_blank\">Learn more</a>",
+            "default": "json",
+            "extends_schema": true,
+            "type": "string",
+            "name": "webhook_type"
+          },
+          {
+            "control_type": "schema-designer",
+            "label": "Payload schema",
+            "sample_data_type": "json_http",
+            "extends_schema": true,
+            "empty_schema_title": "Describe all fields in your response.",
+            "optional": true,
+            "sticky": true,
+            "type": "string",
+            "name": "payload_schema"
+          },
+          {
+            "control_type": "schema-designer",
+            "label": "Query params",
+            "extends_schema": true,
+            "empty_schema_title": "Describe all the query params",
+            "optional": true,
+            "sticky": true,
+            "type": "string",
+            "name": "query_params"
+          },
+          {
+            "control_type": "schema-designer",
+            "label": "Headers",
+            "extends_schema": true,
+            "empty_schema_title": "Describe all the webhook headers",
+            "optional": true,
+            "sticky": true,
+            "type": "string",
+            "name": "headers_schema"
+          }
+        ],
+        "type": "object"
+      }
+    ],
+    "block": [
+      {
+        "number": 1,
+        "provider": "workato_custom_code",
+        "name": "invoke_custom_ruby_code",
+        "as": "5bf95e26",
+        "keyword": "action",
+        "input": {
+          "code": "{\n  stream_escaped: input['stream'].gsub(\"'\", \"''\"),\n  start_date_escaped: input['startDate'].gsub(\"'\", \"''\"),\n  end_date_escaped: input['endDate'].gsub(\"'\", \"''\"),\n  build_version: input['buildVersion'],\n  period_name: input['periodName']\n}",
+          "name": "Sanitize SQL inputs",
+          "code_input": {
+            "schema": "[{\"control_type\":\"text\",\"label\":\"stream\",\"name\":\"stream\",\"type\":\"string\",\"optional\":true,\"details\":{\"real_name\":\"stream\"},\"parent\":[\"code_input\",\"data\"]},{\"control_type\":\"text\",\"label\":\"startDate\",\"name\":\"startDate\",\"type\":\"string\",\"optional\":true,\"details\":{\"real_name\":\"startDate\"},\"parent\":[\"code_input\",\"data\"]},{\"control_type\":\"text\",\"label\":\"endDate\",\"name\":\"endDate\",\"type\":\"string\",\"optional\":true,\"details\":{\"real_name\":\"endDate\"},\"parent\":[\"code_input\",\"data\"]},{\"control_type\":\"text\",\"label\":\"buildVersion\",\"name\":\"buildVersion\",\"type\":\"string\",\"optional\":true,\"details\":{\"real_name\":\"buildVersion\"},\"parent\":[\"code_input\",\"data\"]},{\"name\":\"periodName\",\"type\":\"string\",\"optional\":true,\"label\":\"periodName\",\"details\":{\"real_name\":\"periodName\"},\"control_type\":\"text\",\"parent\":[\"code_input\",\"data\"]}]",
+            "data": {
+              "stream": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"stream\"]}')}",
+              "startDate": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"startDate\"]}')}",
+              "endDate": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"endDate\"]}')}",
+              "buildVersion": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"buildVersion\"]}')}",
+              "periodName": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"periodName\"]}')}"
+            }
+          },
+          "code_output_schema_json": "[{\"control_type\":\"text\",\"label\":\"Stream escaped\",\"name\":\"stream_escaped\",\"type\":\"string\"},{\"control_type\":\"text\",\"label\":\"Start date escaped\",\"name\":\"start_date_escaped\",\"type\":\"string\"},{\"control_type\":\"text\",\"label\":\"End date escaped\",\"name\":\"end_date_escaped\",\"type\":\"string\"},{\"control_type\":\"text\",\"label\":\"Build version\",\"name\":\"build_version\",\"type\":\"string\"},{\"control_type\":\"text\",\"label\":\"Period name\",\"name\":\"period_name\",\"type\":\"string\"}]"
+        },
+        "extended_output_schema": [
+          {
+            "label": "Output",
+            "name": "output",
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "Stream escaped",
+                "name": "stream_escaped",
+                "type": "string"
+              },
+              {
+                "control_type": "text",
+                "label": "Start date escaped",
+                "name": "start_date_escaped",
+                "type": "string"
+              },
+              {
+                "control_type": "text",
+                "label": "End date escaped",
+                "name": "end_date_escaped",
+                "type": "string"
+              },
+              {
+                "control_type": "text",
+                "label": "Build version",
+                "name": "build_version",
+                "type": "string"
+              },
+              {
+                "control_type": "text",
+                "label": "Period name",
+                "name": "period_name",
+                "type": "string"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "extended_input_schema": [
+          {
+            "control_type": "form-schema-builder",
+            "label": "Input",
+            "name": "code_input",
+            "optional": true,
+            "override": true,
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "Schema",
+                "extends_schema": true,
+                "type": "string",
+                "name": "schema"
+              },
+              {
+                "properties": [
+                  {
+                    "control_type": "text",
+                    "label": "stream",
+                    "name": "stream",
+                    "type": "string",
+                    "optional": true,
+                    "details": {
+                      "real_name": "stream"
+                    },
+                    "parent": [
+                      "code_input",
+                      "data"
+                    ]
+                  },
+                  {
+                    "control_type": "text",
+                    "label": "startDate",
+                    "name": "startDate",
+                    "type": "string",
+                    "optional": true,
+                    "details": {
+                      "real_name": "startDate"
+                    },
+                    "parent": [
+                      "code_input",
+                      "data"
+                    ]
+                  },
+                  {
+                    "control_type": "text",
+                    "label": "endDate",
+                    "name": "endDate",
+                    "type": "string",
+                    "optional": true,
+                    "details": {
+                      "real_name": "endDate"
+                    },
+                    "parent": [
+                      "code_input",
+                      "data"
+                    ]
+                  },
+                  {
+                    "control_type": "text",
+                    "label": "buildVersion",
+                    "name": "buildVersion",
+                    "type": "string",
+                    "optional": true,
+                    "details": {
+                      "real_name": "buildVersion"
+                    },
+                    "parent": [
+                      "code_input",
+                      "data"
+                    ]
+                  },
+                  {
+                    "control_type": "text",
+                    "label": "periodName",
+                    "name": "periodName",
+                    "type": "string",
+                    "optional": true,
+                    "details": {
+                      "real_name": "periodName"
+                    },
+                    "parent": [
+                      "code_input",
+                      "data"
+                    ]
+                  }
+                ],
+                "label": "Data",
+                "type": "object",
+                "name": "data"
+              }
+            ],
+            "sticky": true,
+            "type": "object"
+          }
+        ],
+        "visible_config_fields": [
+          "name",
+          "code_input",
+          "code_output_schema_json",
+          "code",
+          "code_input.data.stream",
+          "code_input.schema",
+          "code_input.data.startDate",
+          "code_input.data.endDate",
+          "code_input.data.buildVersion",
+          "code_input.data.periodName"
+        ],
+        "uuid": "98146315-3cb8-43e9-8e8b-c263babbff7c"
+      },
+      {
+        "number": 2,
+        "provider": "rest",
+        "name": "make_request_v2",
+        "as": "b06217ae",
+        "keyword": "action",
+        "toggleCfg": {
+          "response.ignore_http_errors": true
+        },
+        "input": {
+          "request_name": "Send request",
+          "request": {
+            "method": "POST",
+            "content_type": "application/json",
+            "url": "https://grafana.ol.epicgames.net/api/ds/query",
+            "body": "{\n  \"queries\": [\n    {\n      \"refId\": \"A\",\n      \"datasource\": {\n        \"type\": \"postgres\",\n        \"uid\": \"e3122050-439a-487c-9abf-ec2dfee53116\"\n      },\n      \"rawSql\": \"SELECT COUNT(*) as count FROM \\\"Changelists\\\" c WHERE c.\\\"Stream\\\" = '#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_custom_code\",\"line\":\"5bf95e26\",\"path\":[\"output\",\"stream_escaped\"]}')}' AND c.\\\"Date\\\" >= '#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_custom_code\",\"line\":\"5bf95e26\",\"path\":[\"output\",\"start_date_escaped\"]}')}'::timestamp AND c.\\\"Date\\\" < '#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_custom_code\",\"line\":\"5bf95e26\",\"path\":[\"output\",\"end_date_escaped\"]}')}'::timestamp AND c.\\\"Author\\\" NOT LIKE '%buildmachine%'\",\n      \"format\": \"table\"\n    }\n  ]\n}"
+          },
+          "response": {
+            "output_type": "json",
+            "expected_encoding": "UTF-8",
+            "ignore_http_errors": "false"
+          },
+          "wait_for_response": "false"
+        },
+        "extended_output_schema": [
+          {
+            "label": "Headers",
+            "name": "headers",
+            "properties": [
+
+            ],
+            "type": "object"
+          },
+          {
+            "label": "Response",
+            "name": "response",
+            "properties": [
+
+            ],
+            "type": "object"
+          }
+        ],
+        "extended_input_schema": [
+          {
+            "label": "Response",
+            "name": "response",
+            "override": true,
+            "properties": [
+              {
+                "control_type": "select",
+                "label": "Response content type",
+                "pick_list": [
+                  [
+                    "Text",
+                    "rawdatatxt"
+                  ],
+                  [
+                    "Binary",
+                    "rawdata"
+                  ],
+                  [
+                    "JSON",
+                    "json"
+                  ],
+                  [
+                    "XML",
+                    "xml2"
+                  ]
+                ],
+                "hint": "Select expected format of data response type, e.g. JSON or XML. <a href=\"https://docs.workato.com/developing-connectors/http.html#response-type\" target=\"_blank\">Learn more</a>",
+                "default": "json",
+                "extends_schema": true,
+                "type": "string",
+                "name": "output_type"
+              },
+              {
+                "control_type": "select",
+                "label": "Encoding",
+                "pick_list": "supported_encodings_without_binary_global_pick_list",
+                "pick_list_connection_less": true,
+                "optional": true,
+                "default": "UTF-8",
+                "hint": "Default encoding type is set to UTF-8, and typically doesn't need to be changed. <a href=\"https://docs.workato.com/developing-connectors/http.html#response-type\" target=\"_blank\">Learn more</a>",
+                "type": "string",
+                "name": "expected_encoding"
+              },
+              {
+                "control_type": "schema-designer",
+                "label": "Response schema",
+                "sample_data_type": "json_http",
+                "extends_schema": true,
+                "empty_schema_title": "Describe all fields in your response.",
+                "optional": true,
+                "sticky": true,
+                "type": "string",
+                "name": "response_schema"
+              },
+              {
+                "control_type": "schema-designer",
+                "label": "HTTP response headers",
+                "extends_schema": true,
+                "empty_schema_title": "Describe all the response headers",
+                "optional": true,
+                "sticky": true,
+                "type": "string",
+                "name": "headers_schema"
+              },
+              {
+                "control_type": "checkbox",
+                "label": "Mark non-2xx response codes as success?",
+                "default": "false",
+                "hint": "If <b>yes</b>, non 2xx response codes returned will be marked as a successful action. If <b>no</b>, non 2xx response codes returned will be marked as an error.",
+                "optional": true,
+                "toggle_hint": "Select from option list",
+                "toggle_field": {
+                  "label": "Mark non-2xx response codes as success?",
+                  "control_type": "text",
+                  "toggle_hint": "Use custom value",
+                  "default": false,
+                  "hint": "If <b>yes</b>, non 2xx response codes returned will be marked as a successful action. If <b>no</b>, non 2xx response codes returned will be marked as an error.",
+                  "optional": true,
+                  "render_input": null,
+                  "parse_output": null,
+                  "type": "boolean",
+                  "name": "ignore_http_errors"
+                },
+                "type": "boolean",
+                "name": "ignore_http_errors"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "uuid": "682b725c-9964-497d-a150-0a06c14266ef",
+        "wizardFinished": true
+      },
+      {
+        "number": 3,
+        "provider": "json_parser",
+        "name": "parse_json",
+        "as": "87d5449e",
+        "keyword": "action",
+        "input": {
+          "sample_document": "{\n  \"results\": {\n    \"A\": {\n      \"frames\": [{\n        \"schema\": {\n          \"fields\": [\n            {\"name\": \"CL\", \"type\": \"number\"},\n            {\"name\": \"Date\", \"type\": \"time\"},\n            {\"name\": \"Author\", \"type\": \"string\"},\n            {\"name\": \"FileCount\", \"type\": \"number\"},\n            {\"name\": \"Message\", \"type\": \"string\"},\n            {\"name\": \"ChangeType\", \"type\": \"string\"},\n            {\"name\": \"JiraIds\", \"type\": \"string\"}\n          ]\n        },\n        \"data\": {\n          \"values\": [\n            [42068979, 42051480],\n            [\"2025-04-29T15:50:59Z\", \"2025-04-29T08:48:02Z\"],\n            [\"joseph.pintozzi\", \"tyler.gregory\"],\n            [1, 1],\n            [\"Preventing DSS files...\", \"cloud storage vulnerability...\"],\n            [\"edit\", \"edit\"],\n            [\"FORT-894842\", \"FORT-892781\"]\n          ]\n        }\n      }]\n    }\n  }\n}",
+          "document": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"rest\",\"line\":\"b06217ae\",\"path\":[\"body\"]}')}"
+        },
+        "extended_output_schema": [
+          {
+            "label": "Document",
+            "name": "document",
+            "properties": [
+              {
+                "properties": [
+                  {
+                    "properties": [
+                      {
+                        "name": "frames",
+                        "type": "array",
+                        "of": "object",
+                        "label": "Frames",
+                        "properties": [
+                          {
+                            "properties": [
+                              {
+                                "name": "fields",
+                                "type": "array",
+                                "of": "object",
+                                "label": "Fields",
+                                "properties": [
+                                  {
+                                    "control_type": "text",
+                                    "label": "Name",
+                                    "type": "string",
+                                    "name": "name"
+                                  },
+                                  {
+                                    "control_type": "text",
+                                    "label": "Type",
+                                    "type": "string",
+                                    "name": "type"
+                                  }
+                                ]
+                              }
+                            ],
+                            "label": "Schema",
+                            "type": "object",
+                            "name": "schema"
+                          },
+                          {
+                            "properties": [
+                              {
+                                "name": "values",
+                                "type": "array",
+                                "of": "object",
+                                "label": "Values",
+                                "properties": [
+                                  {
+                                    "name": "array",
+                                    "type": "array",
+                                    "of": "number",
+                                    "control_type": "text",
+                                    "label": "Array"
+                                  }
+                                ]
+                              }
+                            ],
+                            "label": "Data",
+                            "type": "object",
+                            "name": "data"
+                          }
+                        ]
+                      }
+                    ],
+                    "label": "A",
+                    "type": "object",
+                    "name": "A"
+                  }
+                ],
+                "label": "Results",
+                "type": "object",
+                "name": "results"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "extended_input_schema": [
+          {
+            "label": "Edit schema",
+            "name": "edit_schema",
+            "optional": true,
+            "properties": [
+              {
+                "control_type": "multiselect",
+                "label": "Override fields",
+                "pick_list": [
+                  [
+                    "document > results > A > frames > schema > fields > name",
+                    "document__sep__results__sep__A__sep__frames__sep__schema__sep__fields__sep__name"
+                  ],
+                  [
+                    "document > results > A > frames > schema > fields > type",
+                    "document__sep__results__sep__A__sep__frames__sep__schema__sep__fields__sep__type"
+                  ],
+                  [
+                    "document > results > A > frames > data > values > array",
+                    "document__sep__results__sep__A__sep__frames__sep__data__sep__values__sep__array"
+                  ]
+                ],
+                "optional": true,
+                "extends_schema": true,
+                "type": "string",
+                "name": "override_fields_picklist"
+              }
+            ],
+            "sticky": false,
+            "type": "object"
+          }
+        ],
+        "uuid": "d1284aaf-193e-4fca-bc0f-223a0c7ce40b",
+        "skip": false
+      },
+      {
+        "number": 4,
+        "provider": "workato_variable",
+        "name": "declare_variable",
+        "as": "82f0d3cc",
+        "keyword": "action",
+        "input": {
+          "variables": {
+            "schema": "[{\"name\":\"extracted_grafana_count\",\"type\":\"number\",\"optional\":true,\"label\":\"extracted_grafana_count\",\"details\":{\"real_name\":\"extracted_grafana_count\"},\"control_type\":\"number\",\"parent\":[\"variables\",\"data\"]}]",
+            "data": {
+              "extracted_grafana_count": "=_dp('{\"pill_type\":\"output\",\"provider\":\"json_parser\",\"line\":\"87d5449e\",\"path\":[\"document\",\"results\",\"A\",\"frames\",{\"path_element_type\":\"current_item\"},\"data\",\"values\",{\"path_element_type\":\"current_item\"},\"array\"]}').first"
+            }
+          }
+        },
+        "extended_output_schema": [
+          {
+            "control_type": "number",
+            "label": "extracted_grafana_count",
+            "name": "extracted_grafana_count",
+            "optional": true,
+            "parse_output": "float_conversion",
+            "type": "number",
+            "details": {
+              "real_name": "extracted_grafana_count"
+            }
+          }
+        ],
+        "extended_input_schema": [
+          {
+            "add_field_label": "Add a variable",
+            "control_type": "form-schema-builder",
+            "empty_schema_title": "Add variables by giving them a name, type and default value",
+            "exclude_fields": [
+              "hint"
+            ],
+            "item_label": "variable",
+            "label": "Variables",
+            "mark_as_required": true,
+            "name": "variables",
+            "ngIf": "!input.name",
+            "optional": true,
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "Schema",
+                "extends_schema": true,
+                "broadcast_change_event": true,
+                "type": "string",
+                "name": "schema"
+              },
+              {
+                "properties": [
+                  {
+                    "control_type": "number",
+                    "label": "extracted_grafana_count",
+                    "parse_output": "float_conversion",
+                    "name": "extracted_grafana_count",
+                    "type": "number",
+                    "optional": true,
+                    "details": {
+                      "real_name": "extracted_grafana_count"
+                    },
+                    "parent": [
+                      "variables",
+                      "data"
+                    ],
+                    "hint": "Defaults to nil if not supplied.",
+                    "sticky": true
+                  }
+                ],
+                "label": "Data",
+                "type": "object",
+                "name": "data"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "visible_config_fields": [
+          "variables.data.extracted_grafana_count"
+        ],
+        "uuid": "57026d59-148f-4f95-af36-68619a8dd09d"
+      },
+      {
+        "number": 5,
+        "provider": "workato_custom_code",
+        "name": "invoke_custom_ruby_code",
+        "as": "90652392",
+        "keyword": "action",
+        "input": {
+          "code": "begin\n  # Based on the latest debug: input['results'] (Ruby variable) IS the Grafana 'A' object.\n  # This means the value mapped to the 'results' input field for this script is effectively\n  # Step_5_Output.document.results.A\n  # So, a_object will be: { \"status\": ..., \"frames\": [...] }\n  a_object = input['results'] \n  count = 0\n  debug_messages = []\n\n  if a_object.is_a?(Hash)\n    debug_messages << \"input['results'] (interpreted as 'A' object) is a Hash.\"\n    \n    # Directly access 'frames' from a_object (which is the 'A' object)\n    frames_data = a_object['frames']\n    if frames_data.is_a?(Array) && !frames_data.empty?\n      debug_messages << \"a_object['frames'] is a non-empty Array.\"\n      \n      frame_zero = frames_data[0]\n      if frame_zero.is_a?(Hash) && frame_zero['data'].is_a?(Hash)\n        debug_messages << \"frame_zero['data'] is a Hash.\"\n        \n        data_values_section = frame_zero['data']\n        values_array_data = data_values_section['values']\n        if values_array_data.is_a?(Array) && !values_array_data.empty?\n          debug_messages << \"data_values_section['values'] is a non-empty Array.\"\n          \n          value_container_object = values_array_data[0]\n          if value_container_object.is_a?(Hash)\n            debug_messages << \"value_container_object (values[0]) is a Hash.\"\n            \n            array_key_data = value_container_object['array']\n            if array_key_data.is_a?(Array) && !array_key_data.empty?\n              debug_messages << \"value_container_object['array'] holds a non-empty Array.\"\n              \n              extracted_value = array_key_data[0] # This should be the actual count, e.g., 3019\n              debug_messages << \"Extracted value: #{extracted_value.inspect}, Type: #{extracted_value.class}\"\n              \n              if extracted_value.is_a?(Numeric)\n                count = extracted_value.to_i\n                debug_messages << \"Successfully set count: #{count}\"\n              else\n                debug_messages << \"Extracted value is not Numeric. Count remains 0.\"\n              end\n            else; debug_messages << \"value_container_object['array'] does not hold a non-empty Array. Type: #{array_key_data.class rescue 'N/A'}. Empty? #{array_key_data.empty? if array_key_data.respond_to?(:empty?)}\"; end\n          else; debug_messages << \"value_container_object (values[0]) is not a Hash. Type: #{value_container_object.class}\"; end\n        else; debug_messages << \"data_values_section['values'] is not a non-empty Array. Type: #{values_array_data.class}. Empty? #{values_array_data.empty? if values_array_data.respond_to?(:empty?)}\"; end\n      else; debug_messages << \"frame_zero is not a Hash or frame_zero['data'] is not a Hash. Frame0 Type: #{frame_zero.class}. Frame0['data'] Type: #{frame_zero['data'].class if frame_zero.is_a?(Hash)}\"; end\n    else; debug_messages << \"a_object['frames'] is not a non-empty Array. Type: #{frames_data.class rescue 'N/A'}. Empty? #{frames_data.empty? if frames_data.respond_to?(:empty?)}\"; end\n  else; debug_messages << \"input['results'] (interpreted as 'A' object) is not a Hash. Type: #{a_object.class rescue 'N/A'}\"; end\n  \n  # Workato expects the script to return a hash.\n  # This hash will become the output of this action step.\n  { \n    output: { # This 'output' key is conventional for structuring step outputs in Workato.\n      count: count,\n      debug: debug_messages.join('; ')\n    }\n  }\nrescue => e\n  # Attempt to capture debug messages even if an error occurs mid-script\n  current_debug = defined?(debug_messages) && debug_messages.is_a?(Array) ? debug_messages.join('; ') : \"Debug messages not initialized prior to error.\"\n  { \n    output: { \n      count: 0,\n      error: \"Ruby script error: \" + e.message + \" | Backtrace (simplified): \" + e.backtrace.first(5).join(\"; \"),\n      debug_on_error: current_debug\n    }\n  }\nend",
+          "code_input": {
+            "schema": "[{\"name\":\"results\",\"type\":\"string\",\"optional\":true,\"label\":\"results\",\"details\":{\"real_name\":\"results\"},\"control_type\":\"text\",\"parent\":[\"code_input\",\"data\"]}]",
+            "data": {
+              "results": "=_dp('{\"pill_type\":\"output\",\"provider\":\"json_parser\",\"line\":\"87d5449e\",\"path\":[\"document\",\"results\"]}')"
+            }
+          },
+          "name": "Transform Grafana Data",
+          "code_output_schema_json": "[{\"properties\":[{\"control_type\":\"number\",\"label\":\"Count\",\"parse_output\":\"float_conversion\",\"name\":\"count\",\"type\":\"number\"}],\"label\":\"Output\",\"name\":\"output\",\"type\":\"object\"}]"
+        },
+        "extended_output_schema": [
+          {
+            "label": "Output",
+            "name": "output",
+            "properties": [
+              {
+                "properties": [
+                  {
+                    "control_type": "number",
+                    "label": "Count",
+                    "parse_output": "float_conversion",
+                    "name": "count",
+                    "type": "number"
+                  }
+                ],
+                "label": "Output",
+                "name": "output",
+                "type": "object"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "extended_input_schema": [
+          {
+            "control_type": "form-schema-builder",
+            "label": "Input",
+            "name": "code_input",
+            "optional": true,
+            "override": true,
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "Schema",
+                "extends_schema": true,
+                "type": "string",
+                "name": "schema"
+              },
+              {
+                "properties": [
+                  {
+                    "control_type": "text",
+                    "label": "results",
+                    "name": "results",
+                    "type": "string",
+                    "optional": true,
+                    "details": {
+                      "real_name": "results"
+                    },
+                    "parent": [
+                      "code_input",
+                      "data"
+                    ]
+                  }
+                ],
+                "label": "Data",
+                "type": "object",
+                "name": "data"
+              }
+            ],
+            "sticky": true,
+            "type": "object"
+          }
+        ],
+        "visible_config_fields": [
+          "code_input",
+          "code_output_schema_json",
+          "code",
+          "code_input.data.results"
+        ],
+        "uuid": "3280d7ec-e8bc-48ed-8cc7-b05cf120b7ae",
+        "skip": true
+      },
+      {
+        "number": 6,
+        "provider": "logger",
+        "name": "log_message",
+        "as": "29593d3e",
+        "keyword": "action",
+        "input": {
+          "user_logs_enabled": "false",
+          "message": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_variable\",\"line\":\"82f0d3cc\",\"path\":[\"extracted_grafana_count\"]}')}"
+        },
+        "extended_input_schema": [
+          {
+            "control_type": "switch",
+            "default": false,
+            "disable_formula": true,
+            "extends_schema": true,
+            "hint": "                Send a copy of the message to Workato logs.\n                <a href=\"https://docs.workato.com/features/logging-service.html\" target=\"_blank\" class=\"ng-scope\">\n                  Learn more\n                </a>\n",
+            "label": "Send to Workato log service",
+            "name": "user_logs_enabled",
+            "optional": true,
+            "type": "string"
+          }
+        ],
+        "uuid": "b50ecd5d-c19c-47a6-8869-e690edd68b5e",
+        "skip": true
+      },
+      {
+        "number": 7,
+        "provider": "airtable",
+        "name": "create_record",
+        "as": "ef987769",
+        "keyword": "action",
+        "dynamicPickListSelection": {
+          "base_id": "Release Base",
+          "table_id": "Grafana Data"
+        },
+        "toggleCfg": {
+          "base_id": true,
+          "table_id": true,
+          "fldClRUsnq72wO5j5": true,
+          "fldzEIMg4eEtVIZeE": true,
+          "fldCN3vmywyVaLtcm": true,
+          "fldOJ5tej1AFK8vTL": false
+        },
+        "input": {
+          "base_id": "appB6mYCLrK1VkGLg",
+          "table_id": "tblPUE9NNRcFvARYh",
+          "fldRSrTnwjNnMrJmJ": "Release #{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"buildVersion\"]}')} - #{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"periodName\"]}')}",
+          "fldJO7dkPiFpICcB3": "=_dp('{\"pill_type\":\"output\",\"provider\":\"workato_variable\",\"line\":\"82f0d3cc\",\"path\":[\"extracted_grafana_count\"]}').to_f",
+          "fldOJ5tej1AFK8vTL": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"periodName\"]}')}",
+          "fldYetzFl8ZqxORRP": "#{_dp('{\"pill_type\":\"output\",\"provider\":\"workato_webhooks\",\"line\":\"285006a5\",\"path\":[\"payload\",\"stream\"]}')}",
+          "fldClRUsnq72wO5j5": "selOEDFmXuiSNHPXK",
+          "fldzEIMg4eEtVIZeE": "selVt1LuuNpZEhVGM",
+          "fldCN3vmywyVaLtcm": "selQ6uiWeXvDH4oD9"
+        },
+        "extended_output_schema": [
+          {
+            "control_type": "text",
+            "label": "ID",
+            "name": "id",
+            "optional": true,
+            "type": "string"
+          },
+          {
+            "label": "Fields",
+            "name": "fields",
+            "optional": true,
+            "properties": [
+              {
+                "control_type": "text",
+                "label": "Name",
+                "sticky": true,
+                "optional": true,
+                "type": "string",
+                "name": "fldRSrTnwjNnMrJmJ"
+              },
+              {
+                "control_type": "select",
+                "label": "Data Type",
+                "pick_list": [
+                  [
+                    "Changelist Commits",
+                    "selOEDFmXuiSNHPXK"
+                  ],
+                  [
+                    "Server Stability",
+                    "selHYAJpr3RJicsky"
+                  ],
+                  [
+                    "Crash Rate",
+                    "selwsTobECMsmgbFb"
+                  ],
+                  [
+                    "CCU",
+                    "seleolwdPSjcfeut6"
+                  ],
+                  [
+                    "Deploy Health",
+                    "selyUgV6QVBbloHnn"
+                  ]
+                ],
+                "custom_type": "singleSelect",
+                "toggle_hint": "Select option from list",
+                "toggle_field": {
+                  "name": "fldClRUsnq72wO5j5",
+                  "label": "Data Type",
+                  "toggle_hint": "Enter an option",
+                  "sticky": false,
+                  "type": "string",
+                  "control_type": "text"
+                },
+                "optional": true,
+                "type": "string",
+                "name": "fldClRUsnq72wO5j5"
+              },
+              {
+                "control_type": "select",
+                "label": "Platform/Server",
+                "pick_list": [
+                  [
+                    "Windows",
+                    "selwSkMZVelt6VodR"
+                  ],
+                  [
+                    "PS4",
+                    "selm1re26pdj3H5um"
+                  ],
+                  [
+                    "PS5",
+                    "selJZPYnmuWCGJDns"
+                  ],
+                  [
+                    "Xbox One",
+                    "selbvGAoKcOLEoiAq"
+                  ],
+                  [
+                    "XSX",
+                    "seln0L2nJmoVWmn2b"
+                  ],
+                  [
+                    "Switch",
+                    "selBk65daETqqcEza"
+                  ],
+                  [
+                    "Android",
+                    "sel17njKnP9EOfwub"
+                  ],
+                  [
+                    "iOS",
+                    "sel4mWBnugluBLh5v"
+                  ],
+                  [
+                    "UEFN",
+                    "selLKRnNnwo1xa27l"
+                  ],
+                  [
+                    "Luna",
+                    "sel4DqmnvrK60zHGU"
+                  ],
+                  [
+                    "GeforceNow",
+                    "selebEF1zR6BzQi3R"
+                  ],
+                  [
+                    "ALL",
+                    "selMprlq0smoTV43R"
+                  ],
+                  [
+                    "Other",
+                    "selKlx0tKksUnZtH5"
+                  ],
+                  [
+                    "BRCORE",
+                    "selUwmdO8M1vKtUr3"
+                  ],
+                  [
+                    "BRCORE Ranked",
+                    "selU7nqZ4ScZ5JZgb"
+                  ],
+                  [
+                    "Reload (Sunflower)",
+                    "selsjxNC2yuysENha"
+                  ],
+                  [
+                    "OG (Figment)",
+                    "sel5RaHCsCW9XEL8K"
+                  ],
+                  [
+                    "Ballistic (Feral)",
+                    "selhKIVqYXBdHA7NJ"
+                  ],
+                  [
+                    "CMCORE",
+                    "sel4chVKdhbHW8JTg"
+                  ],
+                  [
+                    "Creative-Play",
+                    "selOMwsYg0isZRUkj"
+                  ],
+                  [
+                    "Creative-Edit",
+                    "selWlhUkMOXvv2qVO"
+                  ],
+                  [
+                    "Juno",
+                    "selaOHmLW5IN72KuC"
+                  ],
+                  [
+                    "Sprout",
+                    "seldYADzqZ2MXXiZY"
+                  ],
+                  [
+                    "DelMar",
+                    "selxMSV8KIIrrAC2D"
+                  ],
+                  [
+                    "STW",
+                    "selFXDlk0BqZTHRHE"
+                  ],
+                  [
+                    "LVKEDIT",
+                    "selU1Ij8qnEiozDsc"
+                  ],
+                  [
+                    "LVKPLAY",
+                    "selZx2yIBxbMijX87"
+                  ],
+                  [
+                    "Perforce",
+                    "selVt1LuuNpZEhVGM"
+                  ]
+                ],
+                "custom_type": "singleSelect",
+                "toggle_hint": "Select option from list",
+                "toggle_field": {
+                  "name": "fldzEIMg4eEtVIZeE",
+                  "label": "Platform/Server",
+                  "toggle_hint": "Enter an option",
+                  "sticky": false,
+                  "type": "string",
+                  "control_type": "text"
+                },
+                "optional": true,
+                "type": "string",
+                "name": "fldzEIMg4eEtVIZeE"
+              },
+              {
+                "control_type": "select",
+                "label": "Metric Name",
+                "pick_list": [
+                  [
+                    "MTBF",
+                    "selkHgfWDt5EsPvvK"
+                  ],
+                  [
+                    "MTBF (1h)",
+                    "sel7lLIp96LEERCNM"
+                  ],
+                  [
+                    "MTBF (4h)",
+                    "selKLUCdOkoyg1md8"
+                  ],
+                  [
+                    "MTBF (all)",
+                    "selsdPZrW4FH776YQ"
+                  ],
+                  [
+                    "MTBF (supported)",
+                    "selesahCOi2DZy1Jd"
+                  ],
+                  [
+                    "MTBF (Including OS hangs)",
+                    "sel2FLkmX1K1ZaFtu"
+                  ],
+                  [
+                    "MTBF (Perf Mode)",
+                    "selRtgUDjCl4ZeKHV"
+                  ],
+                  [
+                    "MTBF (Desktop)",
+                    "seloE8E5nxXHK0mFb"
+                  ],
+                  [
+                    "MTBF (Mobile)",
+                    "selLax4P02KdgjEvw"
+                  ],
+                  [
+                    "MTBF (Switch1)",
+                    "selPW6ZUpZ8pxiHB8"
+                  ],
+                  [
+                    "Total Crashes",
+                    "selZ67qQnZsz5So1E"
+                  ],
+                  [
+                    "Total Crashes (all)",
+                    "seleOL9OntsM0eamK"
+                  ],
+                  [
+                    "Total Crashes (supported)",
+                    "selM47SwEvjGdJ4GI"
+                  ],
+                  [
+                    "Crash Rate",
+                    "seltnMmNUTELWXFtF"
+                  ],
+                  [
+                    "Crash Rate NGS",
+                    "selnTZVJCXNu9FOIr"
+                  ],
+                  [
+                    "CrashRate D3D11",
+                    "selpb4OTTbc4L4d60"
+                  ],
+                  [
+                    "CrashRate D3D12",
+                    "selp8OeZ4ewMeK5IJ"
+                  ],
+                  [
+                    "CrashRate D3D11_ES31",
+                    "selYlh2Ir2pXg58NY"
+                  ],
+                  [
+                    "CrashRate DX11",
+                    "selT9gNSyhP7Dg8nh"
+                  ],
+                  [
+                    "CrashRate DX12",
+                    "sellqFNIsbt4lQs4v"
+                  ],
+                  [
+                    "CrashRate Perf Mode",
+                    "selVqCIvVwI3qtcpI"
+                  ],
+                  [
+                    "CCU",
+                    "selaspYlj6cypWx7W"
+                  ],
+                  [
+                    "CCU All",
+                    "selYTeHAaFDIKixBA"
+                  ],
+                  [
+                    "CCU Supported",
+                    "selEYI1zEJSmIUpPC"
+                  ],
+                  [
+                    "CCU DX11",
+                    "selTQn4d5eFQVrCH1"
+                  ],
+                  [
+                    "CCU DX12",
+                    "selOQwYokFbPQF3Nw"
+                  ],
+                  [
+                    "CCU Perf Mode",
+                    "selNa5qX39pVScgMZ"
+                  ],
+                  [
+                    "CCU Mobile",
+                    "selkxDgq9iHn8RlUP"
+                  ],
+                  [
+                    "CL",
+                    "selQ6uiWeXvDH4oD9"
+                  ],
+                  [
+                    "FileCount",
+                    "selr9OsBACAFOjGD1"
+                  ],
+                  [
+                    "ChangeType",
+                    "selMEd4Dy8Ta2SD24"
+                  ],
+                  [
+                    "JiraIds",
+                    "selylCJ4J1LjPFEty"
+                  ],
+                  [
+                    "Other",
+                    "seljiubqmgs42OgpM"
+                  ]
+                ],
+                "custom_type": "singleSelect",
+                "toggle_hint": "Select option from list",
+                "toggle_field": {
+                  "name": "fldCN3vmywyVaLtcm",
+                  "label": "Metric Name",
+                  "toggle_hint": "Enter an option",
+                  "sticky": true,
+                  "type": "string",
+                  "control_type": "text"
+                },
+                "optional": true,
+                "type": "string",
+                "name": "fldCN3vmywyVaLtcm"
+              },
+              {
+                "control_type": "select",
+                "label": "Capture Point",
+                "pick_list": [
+                  [
+                    "Launch",
+                    "sel8exa8sjdryHzKk"
+                  ],
+                  [
+                    "Launch+12h",
+                    "selmuvwVzSChEvtkw"
+                  ],
+                  [
+                    "Day 2",
+                    "selzGo6bGJBQtVWIT"
+                  ],
+                  [
+                    "Day 2+12h",
+                    "selSM1OKPfVKFwBcC"
+                  ],
+                  [
+                    "Before Hard Lock",
+                    "selj8F8tYebjiAf1e"
+                  ],
+                  [
+                    "Hard Lock -> Pencils Down",
+                    "selskIAlEmi9EiTHL"
+                  ],
+                  [
+                    "Pencils Down -> Cert Sub",
+                    "selpSW4csbR6v5u1y"
+                  ],
+                  [
+                    "Cert Sub -> Live",
+                    "selFJa0JGrFOLokF1"
+                  ],
+                  [
+                    "Live+",
+                    "selM38UVtAnKrrOLE"
+                  ]
+                ],
+                "custom_type": "singleSelect",
+                "toggle_hint": "Select option from list",
+                "toggle_field": {
+                  "name": "fldOJ5tej1AFK8vTL",
+                  "label": "Capture Point",
+                  "toggle_hint": "Enter an option",
+                  "sticky": false,
+                  "type": "string",
+                  "control_type": "text"
+                },
+                "optional": true,
+                "type": "string",
+                "name": "fldOJ5tej1AFK8vTL"
+              },
+              {
+                "control_type": "text",
+                "label": "Stream",
+                "sticky": false,
+                "optional": true,
+                "type": "string",
+                "name": "fldYetzFl8ZqxORRP"
+              },
+              {
+                "control_type": "number",
+                "label": "Value",
+                "parse_output": "float_conversion",
+                "sticky": false,
+                "render_input": "float_conversion",
+                "optional": true,
+                "type": "number",
+                "name": "fldJO7dkPiFpICcB3"
+              },
+              {
+                "control_type": "number",
+                "label": "Baseline",
+                "parse_output": "float_conversion",
+                "sticky": false,
+                "render_input": "float_conversion",
+                "optional": true,
+                "type": "number",
+                "name": "fldNskLtXaX9pfaIg"
+              },
+              {
+                "control_type": "date_time",
+                "label": "Timestamp",
+                "render_input": "date_time_conversion",
+                "parse_output": "date_time_conversion",
+                "sticky": false,
+                "optional": true,
+                "type": "date_time",
+                "name": "fldYwwaOHtOPKiHn5"
+              },
+              {
+                "control_type": "text",
+                "label": "Delta",
+                "sticky": false,
+                "optional": true,
+                "type": "string",
+                "name": "fldQdZ2hCSFSgEYLm"
+              },
+              {
+                "control_type": "text",
+                "label": "Notes",
+                "sticky": false,
+                "optional": true,
+                "type": "string",
+                "name": "fldmQIUNJeirK81T3"
+              },
+              {
+                "control_type": "text",
+                "label": "Raw JSON",
+                "sticky": false,
+                "optional": true,
+                "type": "string",
+                "name": "fldbzgtsDVF7LBIC4"
+              }
+            ],
+            "type": "object"
+          },
+          {
+            "control_type": "date_time",
+            "label": "Created time",
+            "name": "createdTime",
+            "optional": true,
+            "parse_output": "date_time_conversion",
+            "type": "date_time",
+            "render_input": "date_time_conversion"
+          }
+        ],
+        "extended_input_schema": [
+          {
+            "control_type": "text",
+            "label": "Name",
+            "name": "fldRSrTnwjNnMrJmJ",
+            "optional": true,
+            "sticky": true,
+            "type": "string"
+          },
+          {
+            "control_type": "select",
+            "label": "Data Type",
+            "name": "fldClRUsnq72wO5j5",
+            "optional": true,
+            "pick_list": [
+              [
+                "Changelist Commits",
+                "selOEDFmXuiSNHPXK"
+              ],
+              [
+                "Server Stability",
+                "selHYAJpr3RJicsky"
+              ],
+              [
+                "Crash Rate",
+                "selwsTobECMsmgbFb"
+              ],
+              [
+                "CCU",
+                "seleolwdPSjcfeut6"
+              ],
+              [
+                "Deploy Health",
+                "selyUgV6QVBbloHnn"
+              ]
+            ],
+            "toggle_field": {
+              "name": "fldClRUsnq72wO5j5",
+              "label": "Data Type",
+              "toggle_hint": "Enter an option",
+              "sticky": false,
+              "type": "string",
+              "control_type": "text"
+            },
+            "toggle_hint": "Select option from list",
+            "type": "string"
+          },
+          {
+            "control_type": "select",
+            "label": "Platform/Server",
+            "name": "fldzEIMg4eEtVIZeE",
+            "optional": true,
+            "pick_list": [
+              [
+                "Windows",
+                "selwSkMZVelt6VodR"
+              ],
+              [
+                "PS4",
+                "selm1re26pdj3H5um"
+              ],
+              [
+                "PS5",
+                "selJZPYnmuWCGJDns"
+              ],
+              [
+                "Xbox One",
+                "selbvGAoKcOLEoiAq"
+              ],
+              [
+                "XSX",
+                "seln0L2nJmoVWmn2b"
+              ],
+              [
+                "Switch",
+                "selBk65daETqqcEza"
+              ],
+              [
+                "Android",
+                "sel17njKnP9EOfwub"
+              ],
+              [
+                "iOS",
+                "sel4mWBnugluBLh5v"
+              ],
+              [
+                "UEFN",
+                "selLKRnNnwo1xa27l"
+              ],
+              [
+                "Luna",
+                "sel4DqmnvrK60zHGU"
+              ],
+              [
+                "GeforceNow",
+                "selebEF1zR6BzQi3R"
+              ],
+              [
+                "ALL",
+                "selMprlq0smoTV43R"
+              ],
+              [
+                "Other",
+                "selKlx0tKksUnZtH5"
+              ],
+              [
+                "BRCORE",
+                "selUwmdO8M1vKtUr3"
+              ],
+              [
+                "BRCORE Ranked",
+                "selU7nqZ4ScZ5JZgb"
+              ],
+              [
+                "Reload (Sunflower)",
+                "selsjxNC2yuysENha"
+              ],
+              [
+                "OG (Figment)",
+                "sel5RaHCsCW9XEL8K"
+              ],
+              [
+                "Ballistic (Feral)",
+                "selhKIVqYXBdHA7NJ"
+              ],
+              [
+                "CMCORE",
+                "sel4chVKdhbHW8JTg"
+              ],
+              [
+                "Creative-Play",
+                "selOMwsYg0isZRUkj"
+              ],
+              [
+                "Creative-Edit",
+                "selWlhUkMOXvv2qVO"
+              ],
+              [
+                "Juno",
+                "selaOHmLW5IN72KuC"
+              ],
+              [
+                "Sprout",
+                "seldYADzqZ2MXXiZY"
+              ],
+              [
+                "DelMar",
+                "selxMSV8KIIrrAC2D"
+              ],
+              [
+                "STW",
+                "selFXDlk0BqZTHRHE"
+              ],
+              [
+                "LVKEDIT",
+                "selU1Ij8qnEiozDsc"
+              ],
+              [
+                "LVKPLAY",
+                "selZx2yIBxbMijX87"
+              ],
+              [
+                "Perforce",
+                "selVt1LuuNpZEhVGM"
+              ]
+            ],
+            "toggle_field": {
+              "name": "fldzEIMg4eEtVIZeE",
+              "label": "Platform/Server",
+              "toggle_hint": "Enter an option",
+              "sticky": false,
+              "type": "string",
+              "control_type": "text"
+            },
+            "toggle_hint": "Select option from list",
+            "type": "string"
+          },
+          {
+            "control_type": "select",
+            "label": "Metric Name",
+            "name": "fldCN3vmywyVaLtcm",
+            "optional": true,
+            "pick_list": [
+              [
+                "MTBF",
+                "selkHgfWDt5EsPvvK"
+              ],
+              [
+                "MTBF (1h)",
+                "sel7lLIp96LEERCNM"
+              ],
+              [
+                "MTBF (4h)",
+                "selKLUCdOkoyg1md8"
+              ],
+              [
+                "MTBF (all)",
+                "selsdPZrW4FH776YQ"
+              ],
+              [
+                "MTBF (supported)",
+                "selesahCOi2DZy1Jd"
+              ],
+              [
+                "MTBF (Including OS hangs)",
+                "sel2FLkmX1K1ZaFtu"
+              ],
+              [
+                "MTBF (Perf Mode)",
+                "selRtgUDjCl4ZeKHV"
+              ],
+              [
+                "MTBF (Desktop)",
+                "seloE8E5nxXHK0mFb"
+              ],
+              [
+                "MTBF (Mobile)",
+                "selLax4P02KdgjEvw"
+              ],
+              [
+                "MTBF (Switch1)",
+                "selPW6ZUpZ8pxiHB8"
+              ],
+              [
+                "Total Crashes",
+                "selZ67qQnZsz5So1E"
+              ],
+              [
+                "Total Crashes (all)",
+                "seleOL9OntsM0eamK"
+              ],
+              [
+                "Total Crashes (supported)",
+                "selM47SwEvjGdJ4GI"
+              ],
+              [
+                "Crash Rate",
+                "seltnMmNUTELWXFtF"
+              ],
+              [
+                "Crash Rate NGS",
+                "selnTZVJCXNu9FOIr"
+              ],
+              [
+                "CrashRate D3D11",
+                "selpb4OTTbc4L4d60"
+              ],
+              [
+                "CrashRate D3D12",
+                "selp8OeZ4ewMeK5IJ"
+              ],
+              [
+                "CrashRate D3D11_ES31",
+                "selYlh2Ir2pXg58NY"
+              ],
+              [
+                "CrashRate DX11",
+                "selT9gNSyhP7Dg8nh"
+              ],
+              [
+                "CrashRate DX12",
+                "sellqFNIsbt4lQs4v"
+              ],
+              [
+                "CrashRate Perf Mode",
+                "selVqCIvVwI3qtcpI"
+              ],
+              [
+                "CCU",
+                "selaspYlj6cypWx7W"
+              ],
+              [
+                "CCU All",
+                "selYTeHAaFDIKixBA"
+              ],
+              [
+                "CCU Supported",
+                "selEYI1zEJSmIUpPC"
+              ],
+              [
+                "CCU DX11",
+                "selTQn4d5eFQVrCH1"
+              ],
+              [
+                "CCU DX12",
+                "selOQwYokFbPQF3Nw"
+              ],
+              [
+                "CCU Perf Mode",
+                "selNa5qX39pVScgMZ"
+              ],
+              [
+                "CCU Mobile",
+                "selkxDgq9iHn8RlUP"
+              ],
+              [
+                "CL",
+                "selQ6uiWeXvDH4oD9"
+              ],
+              [
+                "FileCount",
+                "selr9OsBACAFOjGD1"
+              ],
+              [
+                "ChangeType",
+                "selMEd4Dy8Ta2SD24"
+              ],
+              [
+                "JiraIds",
+                "selylCJ4J1LjPFEty"
+              ],
+              [
+                "Other",
+                "seljiubqmgs42OgpM"
+              ]
+            ],
+            "toggle_field": {
+              "name": "fldCN3vmywyVaLtcm",
+              "label": "Metric Name",
+              "toggle_hint": "Enter an option",
+              "sticky": true,
+              "type": "string",
+              "control_type": "text"
+            },
+            "toggle_hint": "Select option from list",
+            "type": "string"
+          },
+          {
+            "control_type": "select",
+            "label": "Capture Point",
+            "name": "fldOJ5tej1AFK8vTL",
+            "optional": true,
+            "pick_list": [
+              [
+                "Launch",
+                "sel8exa8sjdryHzKk"
+              ],
+              [
+                "Launch+12h",
+                "selmuvwVzSChEvtkw"
+              ],
+              [
+                "Day 2",
+                "selzGo6bGJBQtVWIT"
+              ],
+              [
+                "Day 2+12h",
+                "selSM1OKPfVKFwBcC"
+              ],
+              [
+                "Before Hard Lock",
+                "selj8F8tYebjiAf1e"
+              ],
+              [
+                "Hard Lock -> Pencils Down",
+                "selskIAlEmi9EiTHL"
+              ],
+              [
+                "Pencils Down -> Cert Sub",
+                "selpSW4csbR6v5u1y"
+              ],
+              [
+                "Cert Sub -> Live",
+                "selFJa0JGrFOLokF1"
+              ],
+              [
+                "Live+",
+                "selM38UVtAnKrrOLE"
+              ]
+            ],
+            "toggle_field": {
+              "name": "fldOJ5tej1AFK8vTL",
+              "label": "Capture Point",
+              "toggle_hint": "Enter an option",
+              "sticky": false,
+              "type": "string",
+              "control_type": "text"
+            },
+            "toggle_hint": "Select option from list",
+            "type": "string"
+          },
+          {
+            "control_type": "text",
+            "label": "Stream",
+            "name": "fldYetzFl8ZqxORRP",
+            "optional": true,
+            "sticky": false,
+            "type": "string"
+          },
+          {
+            "control_type": "number",
+            "label": "Value",
+            "name": "fldJO7dkPiFpICcB3",
+            "optional": true,
+            "parse_output": "float_conversion",
+            "sticky": false,
+            "type": "number",
+            "render_input": "float_conversion"
+          },
+          {
+            "control_type": "number",
+            "label": "Baseline",
+            "name": "fldNskLtXaX9pfaIg",
+            "optional": true,
+            "parse_output": "float_conversion",
+            "sticky": false,
+            "type": "number",
+            "render_input": "float_conversion"
+          },
+          {
+            "control_type": "date_time",
+            "label": "Timestamp",
+            "name": "fldYwwaOHtOPKiHn5",
+            "optional": true,
+            "parse_output": "date_time_conversion",
+            "sticky": false,
+            "type": "date_time",
+            "render_input": "date_time_conversion"
+          },
+          {
+            "control_type": "text",
+            "label": "Delta",
+            "name": "fldQdZ2hCSFSgEYLm",
+            "optional": true,
+            "sticky": false,
+            "type": "string"
+          },
+          {
+            "control_type": "text",
+            "label": "Notes",
+            "name": "fldmQIUNJeirK81T3",
+            "optional": true,
+            "sticky": false,
+            "type": "string"
+          },
+          {
+            "control_type": "text",
+            "label": "Raw JSON",
+            "name": "fldbzgtsDVF7LBIC4",
+            "optional": true,
+            "sticky": false,
+            "type": "string"
+          },
+          {
+            "control_type": "checkbox",
+            "hint": "The Airtable API will perform best-effort automatic data conversion from string values if the typecast parameter is true.",
+            "label": "Typecast",
+            "name": "typecast",
+            "optional": true,
+            "parse_output": "boolean_conversion",
+            "sticky": true,
+            "toggle_field": {
+              "label": "Typecast",
+              "control_type": "text",
+              "optional": true,
+              "render_input": "boolean_conversion",
+              "hint": "Allowed values are <b>true</b>, <b>false</b>",
+              "toggle_hint": "Use custom value",
+              "type": "boolean",
+              "name": "typecast"
+            },
+            "toggle_hint": "Select from option list",
+            "type": "number",
+            "render_input": "boolean_conversion"
+          }
+        ],
+        "visible_config_fields": [
+          "base_id",
+          "table_id",
+          "fldRSrTnwjNnMrJmJ",
+          "typecast",
+          "fldClRUsnq72wO5j5",
+          "fldzEIMg4eEtVIZeE",
+          "fldCN3vmywyVaLtcm",
+          "fldOJ5tej1AFK8vTL",
+          "fldYetzFl8ZqxORRP",
+          "fldJO7dkPiFpICcB3",
+          "fldNskLtXaX9pfaIg",
+          "fldYwwaOHtOPKiHn5",
+          "fldQdZ2hCSFSgEYLm",
+          "fldmQIUNJeirK81T3",
+          "fldbzgtsDVF7LBIC4"
+        ],
+        "uuid": "014d6cb9-943f-4be2-afa2-2751aa2de3f8"
+      }
+    ],
+    "uuid": "4618ac72-6fbc-4e17-8a18-1cec78fc1c63",
+    "wizardFinished": true,
+    "unfinished": false
+  },
+  "config": [
+    {
+      "keyword": "application",
+      "provider": "workato_webhooks",
+      "skip_validation": false,
+      "account_id": null
+    },
+    {
+      "keyword": "application",
+      "provider": "rest",
+      "skip_validation": false,
+      "account_id": {
+        "zip_name": "Connections/erm_grafana.connection.json",
+        "name": "ERM-Grafana",
+        "folder": "Connections"
+      }
+    },
+    {
+      "keyword": "application",
+      "provider": "airtable",
+      "skip_validation": false,
+      "account_id": {
+        "zip_name": "Components/justinpeterson_airtable.connection.json",
+        "name": "JustinPeterson-AirTable",
+        "folder": "Components"
+      }
+    },
+    {
+      "keyword": "application",
+      "provider": "json_parser",
+      "skip_validation": false,
+      "account_id": null
+    },
+    {
+      "keyword": "application",
+      "provider": "workato_custom_code",
+      "skip_validation": false,
+      "account_id": null
+    },
+    {
+      "keyword": "application",
+      "provider": "logger",
+      "skip_validation": true,
+      "account_id": null
+    },
+    {
+      "keyword": "application",
+      "provider": "workato_variable",
+      "skip_validation": false,
+      "account_id": null
+    }
+  ]
+}
