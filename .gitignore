@@ -1,51 +1,77 @@
+# Environment variables (CRITICAL - contains API keys)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # Dependencies
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment variables
-.env
-.env.local
-.env.*.local
-
-# IDE
+# IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 
 # Logs
 logs/
 *.log
 
-# Output directories
-output/
+# Cache directories
+.cache/
+sync/cache/
+automation/screenshots/
+
+# Build outputs
 dist/
 build/
+reporting/output/
 
 # Temporary files
+tmp/
+temp/
 *.tmp
 *.temp
-.cache/
 
-# Analysis results (may contain sensitive data)
+# Archive folder (local organization only)
+archive/
+
+# Large data files (regeneratable)
+*.xlsx
+*.csv
+*.pdf
+versionreport.txt
+
+# Analysis output files (regeneratable)
 analysis/*.json
-analysis/*.csv
-analysis/reports/
-
-# Backup files
-*.bak
-*.backup
-
-# API response caches
-.airtable-cache/
+analysis/input/
+analysis/output/
+!analysis/data-viability-assessment.md
+!analysis/base-architecture-analysis.md
+!analysis/implementation-roadmap.md
 
 # Test coverage
 coverage/
 .nyc_output/
+
+# API response caches
+.airtable-cache/
+*.cache
+
+# Backup files
+*.bak
+*.backup
